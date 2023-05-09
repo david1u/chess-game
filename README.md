@@ -29,6 +29,8 @@
 
 
 ### Screen Layouts
+![Frame 4](https://user-images.githubusercontent.com/24498843/236995841-5f569cac-9a76-4ec1-8678-38aa2d3ec632.png)
+> The menu previous to this one will ask the user if they desire to load a game or start a new game. This layout is of a simple menu that allows the user to decide if they will be facing a computer or another person in a new game. The menu will prompt for a name after either option is selected. 
 ![Frame 3](https://user-images.githubusercontent.com/24498843/236993878-49ebc3a0-7658-41ef-aeb9-70ebbdda1727.png)
 > This layout is a mock-up of the chessboard in the context of a match between two players. No pieces are shown but will have icons representative of chess pieces. 
 
