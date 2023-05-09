@@ -38,22 +38,22 @@
 
 ## Class Diagram
 ![ChessUMLClassDiagram drawio](https://user-images.githubusercontent.com/129913826/236961696-779924fc-6980-46ab-9186-95d07b6e7593.png)
- > **Menu Class**
+ > **Menu Class**  
  > A menu class with a private string variable called menu and 2 public void functions called createGame() and displayMenu().
 
- > **Player Class**
+ > **Player Class**  
  > A player class with a private string variable called name and a private bool variable called BlackWhite, which is used for telling whether the player is the black or white pieces.
 
- > **Piece Class**
+ > **Piece Class**  
  > An abstract piece class with 2 private bool variables called captured and BlackWhite used for telling whether the piece has been captured or not and whether the piece is black or white respectively. Also has 2 public void functions called captured() and movePiece()
 
- > **Pawn, King, Knight, Rook, Bishop, and Queen Classes**
+ > **Pawn, King, Knight, Rook, Bishop, and Queen Classes**  
  > Derived classes from piece class with a private string variable called pieceType
 
- > **Square Class**
+ > **Square Class**  
  > A square class made up of 3 member variables: 2 bool variables called color and occupied for white and black squares and telling whether the square is occupied by a piece respectively, and a Piece variable called currPiece that tells what piece is on the tile. Contains 2 public void functions called setPiece(Piece newPiece) and removePiece(). 
 
- > **Board Class**
+ > **Board Class**  
  > A board class with 3 private member variables: a 2-D array of Square objects called chessBoard and 2 Piece arrays called eliminatedW and eliminatedB for keeping track of the pieces on each side that have been eliminated. Contains void initializeBoard() function, getPiece() function that takes a character and int and returns the piece at that coordinate, void pieceTakenB and pieceTakenW functions that take a Piece object and add it to the corresponding eliminated array, and a checkMove() function that takes 2 Piece parameters and returns a boolean. Composed of square objects.
 
  
