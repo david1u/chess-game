@@ -27,6 +27,7 @@
 
 ## Class Diagram!
 [ChessUMLClassDiagram drawio](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/3d42cdcc-54fe-4750-8063-92bbf7fcbb34)
+![best diagram](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/bc114887-592a-4282-bfe2-16a2a6df0976)
 
  > **Menu Class**  
  > A menu class with a private string variable called menu and 2 public void functions called createGame() and displayMenu().
