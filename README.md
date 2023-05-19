@@ -25,8 +25,9 @@
 
 > Include the layout of each of your screens. The layout should describe the screen’s major components such as menus and prompts for user inputs, expected output, and buttons (if applicable). Explain what is on the layout, and the purpose of each menu item, button, etc. If many screens share the same layout, start by describing the general layout and then list the screens that will be using that layout and the differences between each of them.
 
-## Class Diagram
-![ChessUMLClassDiagram drawio](https://user-images.githubusercontent.com/129913826/236961696-779924fc-6980-46ab-9186-95d07b6e7593.png)
+## Class Diagram!
+[ChessUMLClassDiagram drawio](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/3d42cdcc-54fe-4750-8063-92bbf7fcbb34)
+
  > **Menu Class**  
  > A menu class with a private string variable called menu and 2 public void functions called createGame() and displayMenu().
 
