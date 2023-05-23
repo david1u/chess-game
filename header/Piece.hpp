@@ -3,9 +3,9 @@
 
 class Piece {
  private:
-    bool captured;
+    //true represents white piece, false represents black piece
+    bool blackWhite;
  public:
-    virtual void captured() = 0;
     virtual void movePiece() = 0;
 };
 

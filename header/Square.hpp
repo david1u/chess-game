@@ -2,13 +2,11 @@
 #define SQUARE_HPP
 #include "Piece.hpp"
 
-class square {
+class Square {
  private:
-    bool color;
-    bool occupied;
-    Piece currPiece;
+    Piece* currPiece;
  public:
-    void setPiece(Piece &);
+    void setPiece(Piece*);
     void removePiece();
 };
 
