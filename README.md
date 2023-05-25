@@ -30,7 +30,9 @@
 
 ## Class Diagram!
 
-![best diagram drawio](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/f8fd3aa9-d909-41f5-aec8-b989c9a9c6ec)
+<img width="573" alt="Screen Shot 2023-05-25 at 3 55 26 PM" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/e45a9a0f-44e3-452d-84b6-eb245d7f25f6">
+
+
 
  > **Menu Class**  
  > A menu class with a private string variable called menu and 2 public void functions called createGame() and displayMenu().
