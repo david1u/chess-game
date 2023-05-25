@@ -14,7 +14,10 @@
     * Saving, loading, undo moves, and a simple computer to play against. Alongside all the traditional rules of chess. The chess board will be displayed on a UI, and the user commands will be on a console.
 ## User Interface Specification
 ### Navigation Diagram
-![betterDiagram](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/fb934304-745f-48bb-a077-ea604c96f53e)
+
+<img width="640" alt="Screen Shot 2023-05-25 at 11 56 13 AM" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/6653100c-03b6-4e89-ba6d-98497cd16fae">
+
+
 
 
 ### Screen Layouts
