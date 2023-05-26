@@ -30,8 +30,7 @@
 
 ## Class Diagram!
 
-<img width="573" alt="Screen Shot 2023-05-25 at 3 55 26 PM" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/e45a9a0f-44e3-452d-84b6-eb245d7f25f6">
-
+![UDDEUDUE](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/0e9415f0-317f-4693-940a-2c332ddac538)
 
 
  > **Menu Class**  
