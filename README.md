@@ -15,7 +15,8 @@
 ## User Interface Specification
 ### Navigation Diagram
 
-<img width="640" alt="Screen Shot 2023-05-25 at 11 56 13 AM" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/6653100c-03b6-4e89-ba6d-98497cd16fae">
+
+![navi](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/36db75d5-cbc7-4ce7-b91d-b498fa4f188e)
 
 
 
