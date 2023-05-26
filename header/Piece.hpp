@@ -29,7 +29,7 @@ class Pawn : public Piece
 public:
    Pawn(bool isWhite)
    {
-      name = isWhite ? 'P' : 'p';
+      name = isWhite ? '♟︎' : '♙';
       white = isWhite;
    }
    bool move(int newX, int newY, Board &board) override;
@@ -40,7 +40,7 @@ class Rook : public Piece
 public:
    Rook(bool isWhite)
    {
-      name = isWhite ? 'R' : 'r';
+      name = isWhite ? '♜' : '♖';
       white = isWhite;
    }
    bool move(int newX, int newY, Board &board) override;
@@ -51,7 +51,7 @@ class Knight : public Piece
 public:
    Knight(bool isWhite)
    {
-      name = isWhite ? 'N' : 'n';
+      name = isWhite ? '♞' : '♘';
       white = isWhite;
    }
    bool move(int newX, int newY, Board &board) override;
@@ -62,7 +62,7 @@ class Bishop : public Piece
 public:
    Bishop(bool isWhite)
    {
-      name = isWhite ? 'B' : 'b';
+      name = isWhite ? '♝' : '♗';
       white = isWhite;
    }
    bool move(int newX, int newY, Board &board) override;
@@ -73,7 +73,7 @@ class Queen : public Piece
 public:
    Queen(bool isWhite)
    {
-      name = isWhite ? 'Q' : 'q';
+      name = isWhite ? '♛' : '♕';
       white = isWhite;
    }
    bool move(int newX, int newY, Board &board) override;
@@ -84,7 +84,7 @@ class King : public Piece
 public:
    King(bool isWhite)
    {
-      name = isWhite ? 'K' : 'k';
+      name = isWhite ? '♚' : '♔';
       white = isWhite;
    }
    bool move(int newX, int newY, Board &board) override;
