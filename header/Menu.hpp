@@ -7,6 +7,7 @@ class Menu {
     string choice = "";
  public:
     void quit();
+    virtual void displayChoices() = 0;
     virtual void chooseOption() = 0;
 }
 
