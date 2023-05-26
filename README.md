@@ -30,7 +30,7 @@
 
 ## Class Diagram!
 
-![UDDEUDUE](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/0e9415f0-317f-4693-940a-2c332ddac538)
+![UDDEUDUE drawio](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/4fe52e2e-ed10-476e-8425-aeca3eaf9f60)
 
 
  > **Menu Class**  
