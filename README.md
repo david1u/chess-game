@@ -20,9 +20,11 @@
 
 
 
+
 ### Screen Layouts
-![Frame 4](https://user-images.githubusercontent.com/24498843/236995841-5f569cac-9a76-4ec1-8678-38aa2d3ec632.png)
-> The menu previous to this one will ask the user if they desire to load a game or start a new game. This layout is of a simple menu that allows the user to decide if they will be facing a computer or another person in a new game. The menu will prompt for a name after either option is selected. 
+<img width="239" alt="Screen Shot 2023-05-25 at 11 40 54 PM" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/5556a02f-f719-40c1-bff8-d1897a30a268">
+> The menu previous to this one will ask the user if they desire to start a new game or quit. This layout is of a simple menu that allows the user to decide if they will be facing a computer or another person in a new game.  
+> 
 ![Frame 3](https://user-images.githubusercontent.com/24498843/236993878-49ebc3a0-7658-41ef-aeb9-70ebbdda1727.png)
 > This layout is a mock-up of the chessboard in the context of a match between two players. No pieces are shown but will have icons representative of chess pieces. 
 
