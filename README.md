@@ -26,16 +26,17 @@
 
 <img width="243" alt="Screen Shot 2023-05-25 at 11 32 58 PM" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/7e3e573c-7a8a-4733-83aa-ead7a992505d">
 
-<img width="239" alt="Screen Shot 2023-05-25 at 11 40 54 PM" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/5556a02f-f719-40c1-bff8-d1897a30a268">
+<img width="239" alt="Screen Shot 2023-05-25 at 11 40 54 PM" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/5556a02f-f719-40c1-bff8-d1897a30a268"> 
 
 > The menu previous to this one will ask the user if they desire to start a new game or quit. This layout is of a simple menu that allows the user to decide if they will be facing a computer or another person in a new game.  
 > 
 ![Frame 3](https://user-images.githubusercontent.com/24498843/236993878-49ebc3a0-7658-41ef-aeb9-70ebbdda1727.png)
 > This layout is a mock-up of the chessboard in the context of a match between two players. No pieces are shown but will have icons representative of chess pieces. 
 
-<img width="228" alt="Screen Shot 2023-05-25 at 11 41 33 PM" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/00826bfa-7222-40df-a365-39a05ae613a9">
+<img width="228" alt="Screen Shot 2023-05-25 at 11 41 33 PM" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/00826bfa-7222-40df-a365-39a05ae613a9"> 
 
-<img width="234" alt="Screen Shot 2023-05-26 at 1 35 33 AM" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/1a32deec-bd7c-4010-a284-ba6e626294b1">
+<img width="234" alt="Screen Shot 2023-05-26 at 1 35 33 AM" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/1a32deec-bd7c-4010-a284-ba6e626294b1"> 
+
 
 
 <img width="237" alt="Screen Shot 2023-05-26 at 1 36 01 AM" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/c8cca6f3-3e01-414a-bbae-cd1af216a941">
