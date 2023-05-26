@@ -24,26 +24,36 @@
 
 ### Screen Layouts
 
-<img width="243" alt="Screen Shot 2023-05-25 at 11 32 58 PM" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/7e3e573c-7a8a-4733-83aa-ead7a992505d">
+<img width="243" alt="Screen Shot 2023-05-25 at 11 32 58 PM" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/7e3e573c-7a8a-4733-83aa-ead7a992505d">. 
 
-<img width="239" alt="Screen Shot 2023-05-25 at 11 40 54 PM" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/5556a02f-f719-40c1-bff8-d1897a30a268"> 
+> This menu is the first menu the player sees when they begin playing.  
+> 
+
+<img width="239" alt="Screen Shot 2023-05-25 at 11 40 54 PM" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/5556a02f-f719-40c1-bff8-d1897a30a268">  
+
 
 > The menu previous to this one will ask the user if they desire to start a new game or quit. This layout is of a simple menu that allows the user to decide if they will be facing a computer or another person in a new game.  
 > 
-![chessboard](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/de5d0404-b6b3-406a-b73d-4f03239cbdcf)
+![chessboard](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/de5d0404-b6b3-406a-b73d-4f03239cbdcf). 
 
 
-> This layout is a mock-up of the chessboard in the context of a match between two players. No pieces are shown but will have icons representative of chess pieces. 
+> This layout is a mock-up of the chessboard in the context of a match between two players. 
 
-<img width="228" alt="Screen Shot 2023-05-25 at 11 41 33 PM" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/00826bfa-7222-40df-a365-39a05ae613a9"> 
+<img width="228" alt="Screen Shot 2023-05-25 at 11 41 33 PM" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/00826bfa-7222-40df-a365-39a05ae613a9">   
 
-<img width="234" alt="Screen Shot 2023-05-26 at 1 35 33 AM" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/1a32deec-bd7c-4010-a284-ba6e626294b1"> 
+> This layout is for if a player wishes to surrender in the middle of a match.  
+> 
 
+<img width="234" alt="Screen Shot 2023-05-26 at 1 35 33 AM" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/1a32deec-bd7c-4010-a284-ba6e626294b1">   
+
+> This layout is to celebrate the winner of the chess match.  
+> 
 
 
 <img width="237" alt="Screen Shot 2023-05-26 at 1 36 01 AM" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/c8cca6f3-3e01-414a-bbae-cd1af216a941">
 
-
+> This layout is for when the user has finished their session.  
+> 
 
 > Include the layout of each of your screens. The layout should describe the screen’s major components such as menus and prompts for user inputs, expected output, and buttons (if applicable). Explain what is on the layout, and the purpose of each menu item, button, etc. If many screens share the same layout, start by describing the general layout and then list the screens that will be using that layout and the differences between each of them.
 
