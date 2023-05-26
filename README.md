@@ -16,8 +16,7 @@
 ### Navigation Diagram
 
 
-![navi](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/36db75d5-cbc7-4ce7-b91d-b498fa4f188e)
-
+![navi](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/9bf5a2c2-7ff7-4efb-8e8c-c70dcd0368f5)
 
 
 
