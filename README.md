@@ -78,7 +78,10 @@
  > A square class made up of 3 member variables: 2 bool variables called color and occupied for white and black squares and telling whether the square is occupied by a piece respectively, and a Piece variable called currPiece that tells what piece is on the tile. Contains 2 public void functions called setPiece(Piece newPiece) and removePiece(). 
 
  > **Board Class**  
- > A board class with 3 private member variables: a 2-D array of Square objects called chessBoard and 2 Piece arrays called eliminatedW and eliminatedB for keeping track of the pieces on each side that have been eliminated. Contains void initializeBoard() function, getPiece() function that takes a character and int and returns the piece at that coordinate, void pieceTakenB and pieceTakenW functions that take a Piece object and add it to the corresponding eliminated array, and a checkMove() function that takes 2 Piece parameters and returns a boolean. Composed of square objects.
+ > A board class with 3 private member variables: a 2-D array of Square objects called chessBoard and 2 Piece arrays called eliminatedW and eliminatedB for keeping track of the pieces on each side that have been eliminated. Contains void initializeBoard() function, getPiece() function that takes a character and int and returns the piece at that coordinate, void pieceTakenB and pieceTakenW functions that take a Piece object and add it to the corresponding eliminated array, and a checkMove() function that takes 2 Piece parameters and returns a boolean. Composed of square objects.  
+ 
+ > **UPDATES** 
+ > In this class diagram update we applied the single responsibility principle while also reinforcing the interface segregation principle. First of all, we decided to remove the display board function and display menu function from the board class and the menu class respectively. We did this to avoid storing data and displaying to terminal in the same class. Second, we added the unique features that some chess pieces posses, ie. en passant, castling. This falls under interface segregation principle because we are not implementing functions that are never used in other chess pieces.
 
  
  > ## Phase III
