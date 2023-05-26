@@ -1,15 +1,14 @@
 #ifndef MENU_HPP
 #define MENU_HPP
+#include "string"
 
-namespace Menu {
- private:
-    int choice = 0;
+class Menu {
+ protected:
+    string choice = "";
  public:
-    void displayMenu();
-    void singlePlayer();
-    void twoPlayer();
     void quit();
-    void chooseOption();
+    virtual void displayChoices() = 0;
+    virtual void chooseOption() = 0;
 }
 
 #endif
