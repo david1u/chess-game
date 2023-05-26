@@ -30,7 +30,9 @@
 
 > The menu previous to this one will ask the user if they desire to start a new game or quit. This layout is of a simple menu that allows the user to decide if they will be facing a computer or another person in a new game.  
 > 
-![Frame 3](https://user-images.githubusercontent.com/24498843/236993878-49ebc3a0-7658-41ef-aeb9-70ebbdda1727.png)
+![chessboard](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/de5d0404-b6b3-406a-b73d-4f03239cbdcf)
+
+
 > This layout is a mock-up of the chessboard in the context of a match between two players. No pieces are shown but will have icons representative of chess pieces. 
 
 <img width="228" alt="Screen Shot 2023-05-25 at 11 41 33 PM" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/00826bfa-7222-40df-a365-39a05ae613a9"> 
