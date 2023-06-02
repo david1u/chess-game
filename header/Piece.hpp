@@ -43,10 +43,12 @@ public:
 class Pawn : public Piece
 {
 public:
-   Pawn(bool isWhite)
+   Pawn(bool isWhite, int x, int y)
    {
       name = isWhite ? WHITE_PAWN : BLACK_PAWN;
       white = isWhite;
+      setXCoord(x);
+      setYCoord(y);
    }
    bool move(int newX, int newY, Board &board) override;
 };
@@ -54,10 +56,12 @@ public:
 class Rook : public Piece
 {
 public:
-   Rook(bool isWhite)
+   Rook(bool isWhite, int x, int y)
    {
       name = isWhite ? WHITE_ROOK : BLACK_ROOK;
       white = isWhite;
+      setXCoord(x);
+      setYCoord(y);
    }
    bool move(int newX, int newY, Board &board) override;
 };
@@ -65,10 +69,12 @@ public:
 class Knight : public Piece
 {
 public:
-   Knight(bool isWhite)
+   Knight(bool isWhite, int x, int y)
    {
       name = isWhite ? WHITE_KNIGHT : BLACK_KNIGHT;
       white = isWhite;
+      setXCoord(x);
+      setYCoord(y);
    }
    bool move(int newX, int newY, Board &board) override;
 };
@@ -76,10 +82,12 @@ public:
 class Bishop : public Piece
 {
 public:
-   Bishop(bool isWhite)
+   Bishop(bool isWhite, int x, int y)
    {
       name = isWhite ? WHITE_BISHOP : BLACK_BISHOP;
       white = isWhite;
+      setXCoord(x);
+      setYCoord(y);
    }
    bool move(int newX, int newY, Board &board) override;
 };
@@ -87,10 +95,12 @@ public:
 class Queen : public Piece
 {
 public:
-   Queen(bool isWhite)
+   Queen(bool isWhite, int x, int y)
    {
       name = isWhite ? WHITE_QUEEN : BLACK_QUEEN;
       white = isWhite;
+      setXCoord(x);
+      setYCoord(y);
    }
    bool move(int newX, int newY, Board &board) override;
 };
@@ -98,10 +108,12 @@ public:
 class King : public Piece
 {
 public:
-   King(bool isWhite)
+   King(bool isWhite, int x, int y)
    {
       name = isWhite ? WHITE_KING : BLACK_KING;
       white = isWhite;
+      setXCoord(x);
+      setYCoord(y);
    }
    bool move(int newX, int newY, Board &board) override;
 };
