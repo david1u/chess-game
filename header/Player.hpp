@@ -4,18 +4,21 @@
 #include <vector>
 #include "Piece.hpp"
 
-class Player {
- private:
-    string name;
-    //true represents white piece, false represents black piece
-    bool blackWhite;
-    vector<Piece*> eliminated;
- public:
-    void makeMove();
-    void surrender();
-    void addEliminated(Piece*);
+class Player
+{
+private:
+   string name;
+   // true represents white piece, false represents black piece
+   bool white;
+   vector<Piece *> eliminated;
 
-    ~Player();
+public:
+   Player(std::string name, bool white);
+   void makeMove();
+   void surrender();
+   void addEliminated(Piece *);
+
+   ~Player();
 };
 
 #endif
