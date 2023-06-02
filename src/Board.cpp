@@ -6,19 +6,19 @@ Board::Board() {
     // Initialize the first two rows with Black Pieces
     board[0].resize(8, nullptr); // Resize each row to have 8 columns and initialize with nullptr
     // Place the pieces in the starting position
-    board[0][0] = new Rook(false); // Rook
-    board[0][1] = new Knight(false); // Knight
-    board[0][2] = new Bishop(false); // Bishop
-    board[0][3] = new Queen(false); // Queen
-    board[0][4] = new King(false); // King
-    board[0][5] = new Bishop(false); // Bishop
-    board[0][6] = new Knight(false); // Knight
-    board[0][7] = new Rook(false); // Rook
+    board[0][0] = new Rook(false, 0, 0); // Rook
+    board[0][1] = new Knight(false, 1, 0); // Knight
+    board[0][2] = new Bishop(false, 2, 0); // Bishop
+    board[0][3] = new Queen(false, 3, 0); // Queen
+    board[0][4] = new King(false, 4, 0); // King
+    board[0][5] = new Bishop(false, 5, 0); // Bishop
+    board[0][6] = new Knight(false, 6, 0); // Knight
+    board[0][7] = new Rook(false, 7, 0); // Rook
 
     // Set pawns
     board[1].resize(8, nullptr);
     for (unsigned i = 0; i < 8; ++i) {
-        board[1][i] = new Pawn(false); // Pawn
+        board[1][i] = new Pawn(false, i, 1); // Pawn
     }
 
 
@@ -26,19 +26,19 @@ Board::Board() {
     // Set pawns
     board[6].resize(8, nullptr);
     for (unsigned i = 0; i < 8; ++i) {
-        board[6][i] = new Pawn(true); // Pawn
+        board[6][i] = new Pawn(true, i, 6); // Pawn
     }
 
     board[7].resize(8, nullptr); // Resize each row to have 8 columns and initialize with nullptr
     // Place the pieces in the starting position
-    board[7][0] = new Rook(true); // Rook
-    board[7][1] = new Knight(true); // Knight
-    board[7][2] = new Bishop(true); // Bishop
-    board[7][3] = new Queen(true); // Queen
-    board[7][4] = new King(true); // King
-    board[7][5] = new Bishop(true); // Bishop
-    board[7][6] = new Knight(true); // Knight
-    board[7][7] = new Rook(true); // Rook
+    board[7][0] = new Rook(true, 0, 7); // Rook
+    board[7][1] = new Knight(true, 1, 7); // Knight
+    board[7][2] = new Bishop(true, 2, 7); // Bishop
+    board[7][3] = new Queen(true, 3, 7); // Queen
+    board[7][4] = new King(true, 4, 7); // King
+    board[7][5] = new Bishop(true, 5, 7); // Bishop
+    board[7][6] = new Knight(true, 6, 7); // Knight
+    board[7][7] = new Rook(true, 7, 7); // Rook
 
 
 
@@ -62,4 +62,7 @@ bool Board::isFree(int row, int col) const {
 
 void Board::updateBoard(int newX, int newY, Piece* piece){
     board[newX][newY] = piece;
+    piece.setXCoord(newX);
+    piece.setYCoord(newY);
+    
 }
