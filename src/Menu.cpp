@@ -5,22 +5,12 @@
 #include <iostream>
 using namespace std;
 
-void Menu::quit() const {
+void Menu::quit() {
     exit(0);
 }
 
-void Menu::menuDisplay(){
-    chessDisplay();
-    cout << "\n========================================\n\n";
-    this->displayChoices();
-    cout << "\n========================================\n";
-    cout << "Enter your choice:";
-    cin >> this->choice;
-}
-
 void Menu::chessDisplay() const {
-    //open file to display what is in the ChessText.txt file
-    string filename = "text/ChessText.txt";
+    string filename = "../text/ChessText.txt";
     ifstream file(filename);
 
     if(file.is_open()) {
@@ -36,25 +26,37 @@ void Menu::chessDisplay() const {
 }
 
 void MainMenu::displayChoices() {
-    cout << "        [1] Single Player" << endl;
-    cout << "        [2] Two Player\n" << endl;
-    cout << "        [Q]uit" << endl;
+    cout << "=== Main Menu ===" << endl;
+    cout << "[1] Single Player" << endl;
+    cout << "[2] Two Player\n" << endl;
+    cout << "[Q]uit" << endl;
+    cout << "=================" << endl;
+    cout << "Enter your choice: ";
+    chooseOption();
 }
 void MainMenu::chooseOption() {
 
 }
 
 void StartMenu::displayChoices() {
-    cout << "        [P]lay" << endl;
-    cout << "        [Q]uit" << endl;
+    cout << "=== Start Menu ===" << endl;
+    cout << "[P]lay" << endl;
+    cout << "[Q]uit" << endl;
+    cout << "=================" << endl;
+    cout << "Enter your choice: ";
+    chooseOption();
 }
 void StartMenu::chooseOption() {
 
 }
 
 void SurrenderMenu::displayChoices() {
-    cout << "        [S]urrender" << endl;
-    cout << "        [R]eturn" << endl;
+    cout << "=== Surrender Menu ===" << endl;
+    cout << "[S]urrender" << endl;
+    cout << "[R]eturn" << endl;
+    cout << "=================" << endl;
+    cout << "Enter your choice: ";
+    chooseOption();
 }
 void SurrenderMenu::chooseOption() {
 

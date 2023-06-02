@@ -2,6 +2,6 @@
 
 int main(int argv, char** argc) {
     Menu* mainmenu = new MainMenu();
-    mainmenu->menuDisplay();
+    mainmenu->chessDisplay();
     return 0;
 }
