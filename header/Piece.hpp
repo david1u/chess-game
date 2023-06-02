@@ -32,6 +32,8 @@ protected:
 
 public:
    virtual bool move(int newX, int newY, Board &board) = 0;
+   void setXCoord(int newX) {xCoord = newX;}
+   void setYCoord(int newY) {yCoord = newY;}
    int getXCoord() const { return xCoord; }
    int getYCoord() const { return yCoord; }
    std::string getName() const { return name; }
