@@ -7,11 +7,13 @@ class Menu {
  protected:
    string menuName;
    string choice;
+   
  public:
    Menu(string name) : menuName(name) {}
    ~Menu();
    void quit() const;
    void chessDisplay() const;
+   void menuDisplay();
    virtual void displayChoices() = 0;
    virtual void chooseOption() = 0;
 };
@@ -31,9 +33,8 @@ class StartMenu : public Menu {
 };
 
 class SurrenderMenu : public Menu {
- private:
-   menuName = "Surrender Menu";
  public:
+   SurrenderMenu() : Menu("Surrender Menu") {}
    void displayChoices() override;
    void chooseOption() override;
 };
