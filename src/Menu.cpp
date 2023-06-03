@@ -9,9 +9,9 @@ void Menu::quit() const {
     exit(0);
 }
 
-void Menu::menuDisplay(){
+void Menu::menuDisplay() {
     chessDisplay();
-    cout << "\n========================================\n\n";
+    cout << "========================================\n\n";
     this->displayChoices();
     cout << "\n========================================\n";
     cout << "Enter your choice:";
@@ -40,22 +40,53 @@ void MainMenu::displayChoices() {
     cout << "        [2] Two Player\n" << endl;
     cout << "        [Q]uit" << endl;
 }
-void MainMenu::chooseOption() {
 
+Menu* MainMenu::chooseOption() {
+    Menu* newMenu = nullptr;
+    if(this->choice == "1"){
+        //start one player game
+    }
+    else if(this->choice == "2"){
+        //start two player game
+    }
+    else if(this->choice == "q" || this->choice == "Q"){
+        quit();
+    }
+    else {
+        //choice was not taken in correctly.
+        cout << "choice was not valid, please choose again." << endl;
+        newMenu = new MainMenu();
+    }
+    return newMenu;
 }
 
 void StartMenu::displayChoices() {
     cout << "        [P]lay" << endl;
     cout << "        [Q]uit" << endl;
 }
-void StartMenu::chooseOption() {
 
+Menu* StartMenu::chooseOption() {
+    Menu* newMenu = nullptr;
+    if(this->choice == "p" || this->choice == "P"){
+        newMenu = new MainMenu();
+    }
+    else if(this->choice == "q" || this->choice == "Q"){
+        quit();
+    }
+    else {
+        //choice was not taken in correctly.
+        cout << "choice was not valid, please choose again." << endl;
+        newMenu = new StartMenu();
+    }
+    return newMenu;
 }
 
 void SurrenderMenu::displayChoices() {
     cout << "        [S]urrender" << endl;
     cout << "        [R]eturn" << endl;
 }
-void SurrenderMenu::chooseOption() {
 
+Menu* SurrenderMenu::chooseOption() {
+    //NEEDS IMPLEMENTATION
+    return nullptr;
 }
