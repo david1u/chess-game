@@ -1,3 +1,4 @@
+
 #ifndef __PIECE_HPP__
 #define __PIECE_HPP__
 
@@ -16,6 +17,7 @@
 #define WHITE_PAWN   "\u265F"   // ♟
 
 #include <string>
+#include "Board.hpp"
 
 class Board;
 
@@ -28,39 +30,37 @@ protected:
    int yCoord;
    std::string name;
    bool white;
+   int moveCount;
 
 public:
    virtual bool move(int newX, int newY, Board &board) = 0;
-   void setXCoord(int newX) {xCoord = newX;}
-   void setYCoord(int newY) {yCoord = newY;}
    int getXCoord() const { return xCoord; }
    int getYCoord() const { return yCoord; }
    std::string getName() const { return name; }
    bool getColor() const { return white; }
+   int getMoveCount() const {return moveCount; }
 };
 
 class Pawn : public Piece
 {
 public:
-   Pawn(bool isWhite, int x, int y)
+   Pawn(bool isWhite)
    {
       name = isWhite ? WHITE_PAWN : BLACK_PAWN;
       white = isWhite;
-      setXCoord(x);
-      setYCoord(y);
    }
    bool move(int newX, int newY, Board &board) override;
+   bool enPassant(int newX, int newY, Board &board) ;
+   void pawnPromotion() ;
 };
 
 class Rook : public Piece
 {
 public:
-   Rook(bool isWhite, int x, int y)
+   Rook(bool isWhite)
    {
       name = isWhite ? WHITE_ROOK : BLACK_ROOK;
       white = isWhite;
-      setXCoord(x);
-      setYCoord(y);
    }
    bool move(int newX, int newY, Board &board) override;
 };
@@ -68,12 +68,10 @@ public:
 class Knight : public Piece
 {
 public:
-   Knight(bool isWhite, int x, int y)
+   Knight(bool isWhite)
    {
       name = isWhite ? WHITE_KNIGHT : BLACK_KNIGHT;
       white = isWhite;
-      setXCoord(x);
-      setYCoord(y);
    }
    bool move(int newX, int newY, Board &board) override;
 };
@@ -81,12 +79,10 @@ public:
 class Bishop : public Piece
 {
 public:
-   Bishop(bool isWhite, int x, int y)
+   Bishop(bool isWhite)
    {
       name = isWhite ? WHITE_BISHOP : BLACK_BISHOP;
       white = isWhite;
-      setXCoord(x);
-      setYCoord(y);
    }
    bool move(int newX, int newY, Board &board) override;
 };
@@ -94,12 +90,10 @@ public:
 class Queen : public Piece
 {
 public:
-   Queen(bool isWhite, int x, int y)
+   Queen(bool isWhite)
    {
       name = isWhite ? WHITE_QUEEN : BLACK_QUEEN;
       white = isWhite;
-      setXCoord(x);
-      setYCoord(y);
    }
    bool move(int newX, int newY, Board &board) override;
 };
@@ -107,14 +101,14 @@ public:
 class King : public Piece
 {
 public:
-   King(bool isWhite, int x, int y)
+   King(bool isWhite)
    {
       name = isWhite ? WHITE_KING : BLACK_KING;
       white = isWhite;
-      setXCoord(x);
-      setYCoord(y);
    }
    bool move(int newX, int newY, Board &board) override;
+   bool castle(int newX, int newY, Board &board) ;
+
 };
 
 #endif

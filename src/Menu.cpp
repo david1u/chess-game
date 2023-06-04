@@ -9,8 +9,13 @@ void Menu::quit() const {
     exit(0);
 }
 
+Menu::~Menu() {
+    //NEEDS IMPLEMENTATION
+}
+
 void Menu::menuDisplay() {
     chessDisplay();
+    cout << "                " << this->menuName << endl;
     cout << "========================================\n\n";
     this->displayChoices();
     cout << "\n========================================\n";
@@ -36,18 +41,18 @@ void Menu::chessDisplay() const {
 }
 
 void MainMenu::displayChoices() {
-    cout << "        [1] Single Player" << endl;
-    cout << "        [2] Two Player\n" << endl;
+    cout << "        [2] Two Player" << endl;
+    cout << "        [L]oad Game" << endl;
     cout << "        [Q]uit" << endl;
 }
 
 Menu* MainMenu::chooseOption() {
     Menu* newMenu = nullptr;
-    if(this->choice == "1"){
-        //start one player game
+    if(this->choice == "2"){
+        return new GameInitiateMenu();
     }
-    else if(this->choice == "2"){
-        //start two player game
+    else if(this->choice == "l" || this->choice == "L"){
+        //load game option
     }
     else if(this->choice == "q" || this->choice == "Q"){
         quit();
@@ -87,6 +92,56 @@ void SurrenderMenu::displayChoices() {
 }
 
 Menu* SurrenderMenu::chooseOption() {
+    //NEEDS IMPLEMENTATION
+    return nullptr;
+}
+
+void ResultsMenu::displayChoices() {
+    //NEEDS IMPLEMENTATION
+}
+
+Menu* ResultsMenu::chooseOption() {
+    //NEEDS IMPLEMENTATION
+    return nullptr;
+}
+
+void GameInitiateMenu::displayChoices() {
+    cout << "        Player One(WHITE)\n";
+    cout << "        Player Two(BLACK)\n";
+}
+
+void GameInitiateMenu::menuDisplay() {
+    chessDisplay();
+    cout << "                " << this->menuName << endl;
+    cout << "========================================\n\n";
+    this->displayChoices();
+    cout << "\n========================================\n";
+    cin.ignore();
+    //Fill in variables for p1, p2.
+    cout << "Enter Player One name:";
+    getline(cin, p1);
+    cout << "Enter Player Two name:";
+    getline(cin, p2);
+}
+
+void GameInitiateMenu::getPlayerOneName() const {
+    return p1;
+}
+
+void GameInitiateMenu::getPlayerTwoName() const {
+    return p2;
+}
+
+Menu* GameInitiateMenu::chooseOption() {
+    //NEEDS IMPLEMENTATION
+    return nullptr;
+}
+
+void LoadMenu::displayChoices() {
+    //NEEDS IMPLEMENTATION
+}
+
+Menu* LoadMenu::chooseOption() {
     //NEEDS IMPLEMENTATION
     return nullptr;
 }
