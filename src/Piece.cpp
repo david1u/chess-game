@@ -3,7 +3,11 @@
 #include <cstdlib>
 
 
-bool Pawn::move(int newX, int newY, Board &board) { 
+bool Pawn::move(int newX, int newY, Board &board) {
+    if (enPassant) {
+        return true;
+    }
+    
     if(!board.isFree(newX, newY)){
         Piece* enemyPiece = board.getPiece(newX, newY);
         if(enemyPiece->getColor() && this->getColor()
@@ -26,8 +30,25 @@ bool Pawn::move(int newX, int newY, Board &board) {
         return true;
     }
 
-    return false; 
+    return false;
 }
+bool Pawn::enPassant(int newX, int newY, Board &board) {
+    //pawns must be next to each other
+    //pawns must be enemies
+    //enemy piece must have moved 2 spaces in 1 turn
+    Piece* enemyPiece = board.getPiece(newX, this->getYCoord());
+    if (enemyPiece == BLACK_PAWN || enemyPiece == WHITE_PAWN) {
+        if (this->getColor() != enemyPiece->getColor()) {
+            if (enemyPiece->getMoveCount() == 1 && (enemyPiece->getYCoord() == 4 || enemyPiece->getYCoord() == 5)) {
+                enemyPiece->setYCoord = newY;
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
 bool Rook::move(int newX, int newY, Board &board) { 
     if(!board.isFree(newX, newY)){
         Piece* enemyPiece = board.getPiece(newX, newY);
@@ -93,33 +114,5 @@ bool King::move(int newX, int newY, Board &board) {
      || (abs(this->getXCoord() - newX) == 1 && abs(this->getYCoord() - newY) == 1)){
         return true;
     }
-    return false; 
-}
-
-bool Pawn::enPassant(int newX, int newY, Board &board) {
-    //function is from POV of piece taking other piece
-    //assuming that the move is a valid move
-    int X = newX;
-    int Y = newY;
-    if(white){
-        Y++;
-        if(board.isFree(X, Y)){
-            return false;
-        }
-        else{
-            Piece* enemyPiece = board.getPiece(X, Y);
-            if(enemyPiece->getColor()){
-                return false;
-            }
-            else if(enemyPiece->getMoveCount() == 1)
-                return true;
-            else 
-                return false;
-        }
-    }
-    else{
-        Y--;
-    }
-
     return false; 
 }
