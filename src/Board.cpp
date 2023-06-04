@@ -1,4 +1,9 @@
 #include "../header/Board.hpp"
+#include "../header/Piece.hpp"
+
+int main(){
+    
+}
 
 Board::Board() {
     board.resize(8); // set board to have 8 rows
@@ -62,7 +67,7 @@ bool Board::isFree(int row, int col) const {
 
 void Board::updateBoard(int newX, int newY, Piece* piece){
     board[newX][newY] = piece;
-    piece.setXCoord(newX);
-    piece.setYCoord(newY);
+    piece->setXCoord(newX);
+    piece->setYCoord(newY);
     
 }

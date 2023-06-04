@@ -16,7 +16,6 @@
 #define WHITE_PAWN   "\u265F"   // ♟
 
 #include <string>
-#include "Board.hpp"
 
 class Board;
 
