@@ -16,7 +16,7 @@ class Menu {
     Menu(string name) : menuName(name) {}
     ~Menu();
 
-    void menuDisplay();
+    virtual void menuDisplay();
     virtual Menu* chooseOption() = 0;
 };
 
@@ -32,7 +32,7 @@ class StartMenu : public Menu {
  private: 
     void displayChoices() override;
  public:
-    StartMenu() : Menu("Start Menu") {}
+    StartMenu() : Menu("Start") {}
     Menu* chooseOption() override;
 };
 
@@ -44,5 +44,32 @@ class SurrenderMenu : public Menu {
     Menu* chooseOption() override;
 };
 
+class ResultsMenu : public Menu {
+ private:
+   void displayChoices() override;
+ public:
+   ResultsMenu() : Menu("Results") {}
+   Menu* chooseOption() override;
+};  
+
+class GameInitiateMenu : public Menu {
+ private:
+   void displayChoices() override;
+   string p1, p2;
+ public:
+   string getPlayerOneName() const;
+   string getPlayerTwoName() const;
+   GameInitiateMenu() : Menu("Game Initiate") {}
+   void menuDisplay() override;
+   Menu* chooseOption() override;
+};
+
+class LoadMenu : public Menu {
+ private:
+   void displayChoices() override;
+ public:
+   LoadMenu() : Menu("Results") {}
+   Menu* chooseOption() override;
+};  
 
 #endif
