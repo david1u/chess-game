@@ -1,5 +1,5 @@
 #include "../header/Piece.hpp"
-
+#include "../header/Board.hpp"
  
 bool Pawn::move(int newX, int newY, Board &board) { return false; }
 bool Rook::move(int newX, int newY, Board &board) { return false; }

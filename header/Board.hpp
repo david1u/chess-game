@@ -1,8 +1,9 @@
 #ifndef __BOARD_HPP__
 #define __BOARD_HPP__
 
-#include "Piece.hpp"
 #include <vector>
+
+class Piece;
 
 class Board {
 private:
