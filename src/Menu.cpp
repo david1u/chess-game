@@ -5,12 +5,22 @@
 #include <iostream>
 using namespace std;
 
-void Menu::quit() {
+void Menu::quit() const {
     exit(0);
 }
 
+void Menu::menuDisplay() {
+    chessDisplay();
+    cout << "========================================\n\n";
+    this->displayChoices();
+    cout << "\n========================================\n";
+    cout << "Enter your choice:";
+    cin >> this->choice;
+}
+
 void Menu::chessDisplay() const {
-    string filename = "../text/ChessText.txt";
+    //open file to display what is in the ChessText.txt file
+    string filename = "text/ChessText.txt";
     ifstream file(filename);
 
     if(file.is_open()) {
@@ -26,38 +36,57 @@ void Menu::chessDisplay() const {
 }
 
 void MainMenu::displayChoices() {
-    cout << "=== Main Menu ===" << endl;
-    cout << "[1] Single Player" << endl;
-    cout << "[2] Two Player\n" << endl;
-    cout << "[Q]uit" << endl;
-    cout << "=================" << endl;
-    cout << "Enter your choice: ";
-    chooseOption();
+    cout << "        [1] Single Player" << endl;
+    cout << "        [2] Two Player\n" << endl;
+    cout << "        [Q]uit" << endl;
 }
-void MainMenu::chooseOption() {
 
+Menu* MainMenu::chooseOption() {
+    Menu* newMenu = nullptr;
+    if(this->choice == "1"){
+        //start one player game
+    }
+    else if(this->choice == "2"){
+        //start two player game
+    }
+    else if(this->choice == "q" || this->choice == "Q"){
+        quit();
+    }
+    else {
+        //choice was not taken in correctly.
+        cout << "choice was not valid, please choose again." << endl;
+        newMenu = new MainMenu();
+    }
+    return newMenu;
 }
 
 void StartMenu::displayChoices() {
-    cout << "=== Start Menu ===" << endl;
-    cout << "[P]lay" << endl;
-    cout << "[Q]uit" << endl;
-    cout << "=================" << endl;
-    cout << "Enter your choice: ";
-    chooseOption();
+    cout << "        [P]lay" << endl;
+    cout << "        [Q]uit" << endl;
 }
-void StartMenu::chooseOption() {
 
+Menu* StartMenu::chooseOption() {
+    Menu* newMenu = nullptr;
+    if(this->choice == "p" || this->choice == "P"){
+        newMenu = new MainMenu();
+    }
+    else if(this->choice == "q" || this->choice == "Q"){
+        quit();
+    }
+    else {
+        //choice was not taken in correctly.
+        cout << "choice was not valid, please choose again." << endl;
+        newMenu = new StartMenu();
+    }
+    return newMenu;
 }
 
 void SurrenderMenu::displayChoices() {
-    cout << "=== Surrender Menu ===" << endl;
-    cout << "[S]urrender" << endl;
-    cout << "[R]eturn" << endl;
-    cout << "=================" << endl;
-    cout << "Enter your choice: ";
-    chooseOption();
+    cout << "        [S]urrender" << endl;
+    cout << "        [R]eturn" << endl;
 }
-void SurrenderMenu::chooseOption() {
 
+Menu* SurrenderMenu::chooseOption() {
+    //NEEDS IMPLEMENTATION
+    return nullptr;
 }
