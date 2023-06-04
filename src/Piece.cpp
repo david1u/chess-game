@@ -15,16 +15,29 @@ bool Pawn::move(int newX, int newY, Board &board) {
     if(moveCount == 0){
         jump2 = true;
     }
-
-    if(abs(this->getXCoord() - newX) == 0 && abs(this->getYCoord() - newY) == 2){
+    if(this->getColor()){
+        if(this->getXCoord() - newX == 0 && this->getYCoord() - newY == -2){
         if(jump2){
             return true;
         }
         return false;
+        }
+        if(this->getXCoord() - newX == 0 && this->getYCoord() - newYg == -1){
+            return true;
+        }
     }
-    if(abs(this->getXCoord() - newX) == 0 && abs(this->getYCoord() - newY) == 1){
-        return true;
+    else{
+        if(this->getXCoord() - newX == 0 && this->getYCoord() - newY == 2){
+        if(jump2){
+            return true;
+        }
+        return false;
+        }
+        if(this->getXCoord() - newX == 0 && this->getYCoord() - newYg == 1){
+            return true;
+        }
     }
+    
 
     return false; 
 }
