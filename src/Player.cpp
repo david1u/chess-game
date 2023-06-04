@@ -75,8 +75,8 @@ void Player::showEliminated() const{
         }
         
     cout << "Eliminated pieces: ";
-    for (int x; x < eliminated.len(); x++) {
-        cout << piece->getName() << " ";
+    for (int x; x < eliminated.size(); x++) {
+        cout << eliminated.at(x) << " ";
     }
     cout << "\n";
 }
