@@ -2,6 +2,10 @@
 
 using namespace std;
 
+Player::Player(std::string name, bool player){
+    
+}
+
 void Player::makeMove() {
 
 }
