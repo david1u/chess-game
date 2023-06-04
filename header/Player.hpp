@@ -6,6 +6,7 @@
 #include "Piece.hpp"
 #include "Board.hpp"
 
+
 class Player {
  private:
     string name;
@@ -22,8 +23,22 @@ class Player {
     void surrender();
     void addEliminated(Piece*);
     void showEliminated();
+  
+class Player
+{
+private:
+   string name;
+   // true represents white piece, false represents black piece
+   bool white;
+   vector<Piece *> eliminated;
 
-    ~Player();
+public:
+   Player(std::string name, bool white);
+   void makeMove();
+   void surrender();
+   void addEliminated(Piece *);
+
+   ~Player();
 };
 
 #endif

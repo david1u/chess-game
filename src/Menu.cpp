@@ -1,44 +1,147 @@
-#include "Menu.hpp"
+#include "../header/Menu.hpp"
+#include <cstdlib>
+#include <fstream>
+#include <stdexcept>
 #include <iostream>
 using namespace std;
 
-void Menu::displayMenu() {
-    cout << "=== Game Menu ===" << endl;
-    cout << "1. Single Player" << endl;
-    cout << "2. TwoPlayer" << endl;
-    cout << "3. Quit" << endl;
-    cout << "=================" << endl;
-    cout << "Enter your choice: ";
-    chooseOption();
+void Menu::quit() const {
+    exit(0);
 }
 
-void Menu::chooseOption() {
-    cin >> choice;
-    switch(choice) {
-        case 1:
-            singlePlayer();
-            break;
-        case 2:
-            twoPlayer();
-            break;
-        case 3:
-            quit();
-            break;
-        default:
-            cout << "Invalid choice, Please select again." << endl;
-            displayMenu();
-            break;
+Menu::~Menu() {
+    //NEEDS IMPLEMENTATION
+}
+
+void Menu::menuDisplay() {
+    chessDisplay();
+    cout << "                " << this->menuName << endl;
+    cout << "========================================\n\n";
+    this->displayChoices();
+    cout << "\n========================================\n";
+    cout << "Enter your choice:";
+    cin >> this->choice;
+}
+
+void Menu::chessDisplay() const {
+    //open file to display what is in the ChessText.txt file
+    string filename = "text/ChessText.txt";
+    ifstream file(filename);
+
+    if(file.is_open()) {
+        string line;
+        while (getline(file, line)) {
+            cout << line << '\n';
+        }
+        file.close();
+    }
+    else {
+        throw runtime_error("File failed to open");
     }
 }
 
-void Menu::singlePlayer(){
-    
+void MainMenu::displayChoices() {
+    cout << "        [2] Two Player" << endl;
+    cout << "        [L]oad Game" << endl;
+    cout << "        [Q]uit" << endl;
 }
 
-void Menu::twoPlayer() {
-
+Menu* MainMenu::chooseOption() {
+    Menu* newMenu = nullptr;
+    if(this->choice == "2"){
+        return new GameInitiateMenu();
+    }
+    else if(this->choice == "l" || this->choice == "L"){
+        //load game option
+    }
+    else if(this->choice == "q" || this->choice == "Q"){
+        quit();
+    }
+    else {
+        //choice was not taken in correctly.
+        cout << "choice was not valid, please choose again." << endl;
+        newMenu = new MainMenu();
+    }
+    return newMenu;
 }
 
-void Menu::quit() {
+void StartMenu::displayChoices() {
+    cout << "        [P]lay" << endl;
+    cout << "        [Q]uit" << endl;
+}
 
+Menu* StartMenu::chooseOption() {
+    Menu* newMenu = nullptr;
+    if(this->choice == "p" || this->choice == "P"){
+        newMenu = new MainMenu();
+    }
+    else if(this->choice == "q" || this->choice == "Q"){
+        quit();
+    }
+    else {
+        //choice was not taken in correctly.
+        cout << "choice was not valid, please choose again." << endl;
+        newMenu = new StartMenu();
+    }
+    return newMenu;
+}
+
+void SurrenderMenu::displayChoices() {
+    cout << "        [S]urrender" << endl;
+    cout << "        [R]eturn" << endl;
+}
+
+Menu* SurrenderMenu::chooseOption() {
+    //NEEDS IMPLEMENTATION
+    return nullptr;
+}
+
+void ResultsMenu::displayChoices() {
+    //NEEDS IMPLEMENTATION
+}
+
+Menu* ResultsMenu::chooseOption() {
+    //NEEDS IMPLEMENTATION
+    return nullptr;
+}
+
+void GameInitiateMenu::displayChoices() {
+    cout << "        Player One(WHITE)\n";
+    cout << "        Player Two(BLACK)\n";
+}
+
+void GameInitiateMenu::menuDisplay() {
+    chessDisplay();
+    cout << "                " << this->menuName << endl;
+    cout << "========================================\n\n";
+    this->displayChoices();
+    cout << "\n========================================\n";
+    cin.ignore();
+    //Fill in variables for p1, p2.
+    cout << "Enter Player One name:";
+    getline(cin, p1);
+    cout << "Enter Player Two name:";
+    getline(cin, p2);
+}
+
+void GameInitiateMenu::getPlayerOneName() const {
+    return p1;
+}
+
+void GameInitiateMenu::getPlayerTwoName() const {
+    return p2;
+}
+
+Menu* GameInitiateMenu::chooseOption() {
+    //NEEDS IMPLEMENTATION
+    return nullptr;
+}
+
+void LoadMenu::displayChoices() {
+    //NEEDS IMPLEMENTATION
+}
+
+Menu* LoadMenu::chooseOption() {
+    //NEEDS IMPLEMENTATION
+    return nullptr;
 }

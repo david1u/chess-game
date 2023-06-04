@@ -1,3 +1,4 @@
+
 #ifndef __PIECE_HPP__
 #define __PIECE_HPP__
 
@@ -29,6 +30,7 @@ protected:
    int yCoord;
    std::string name;
    bool white;
+   int moveCount;
 
 public:
    virtual bool move(int newX, int newY, Board &board) = 0;
@@ -36,6 +38,7 @@ public:
    int getYCoord() const { return yCoord; }
    std::string getName() const { return name; }
    bool getColor() const { return white; }
+   int getMoveCount() const {return moveCount; }
 };
 
 class Pawn : public Piece
@@ -47,6 +50,8 @@ public:
       white = isWhite;
    }
    bool move(int newX, int newY, Board &board) override;
+   bool enPassant(int newX, int newY, Board &board) ;
+   void pawnPromotion() ;
 };
 
 class Rook : public Piece
@@ -102,14 +107,8 @@ public:
       white = isWhite;
    }
    bool move(int newX, int newY, Board &board) override;
-};
+   bool castle(int newX, int newY, Board &board) ;
 
-// implementation just for testing
-// bool Pawn::move(int newX, int newY, Board &board) { return false; }
-// bool Rook::move(int newX, int newY, Board &board) { return false; }
-// bool Knight::move(int newX, int newY, Board &board) { return false; }
-// bool Bishop::move(int newX, int newY, Board &board) { return false; }
-// bool Queen::move(int newX, int newY, Board &board) { return false; }
-// bool King::move(int newX, int newY, Board &board) { return false; }
+};
 
 #endif

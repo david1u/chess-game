@@ -3,6 +3,7 @@
 
 using namespace std;
 
+
 bool Player::getColor() {
     return blackWhite;
 }
@@ -55,6 +56,12 @@ bool Player::makeMove(Board* board) {
     
     // move successful
     return true;
+
+Player::Player(std::string name, bool player){
+    
+}
+
+void Player::makeMove() {
 
 
 }
