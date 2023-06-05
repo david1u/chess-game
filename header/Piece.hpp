@@ -36,6 +36,8 @@ public:
    virtual bool move(int newX, int newY, Board &board) = 0;
    int getXCoord() const { return xCoord; }
    int getYCoord() const { return yCoord; }
+   int setXCoord(int newX) const { xCoord = newX; }
+   int setYCoord(int newY) const { yCoord = newY; }
    std::string getName() const { return name; }
    bool getColor() const { return white; }
    int getMoveCount() const {return moveCount; }
