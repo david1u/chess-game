@@ -63,17 +63,46 @@ bool Pawn::enPassant(int newX, int newY, Board &board) {
 }
 
 bool Rook::move(int newX, int newY, Board &board) { 
-    if(!board.isFree(newX, newY)){
-        Piece* enemyPiece = board.getPiece(newX, newY);
-        if(enemyPiece->getColor() && this->getColor()
-        || !enemyPiece->getColor() && !this->getColor())
+    // if(!board.isFree(newX, newY)){
+    //     Piece* enemyPiece = board.getPiece(newX, newY);
+    //     if(enemyPiece->getColor() && this->getColor()
+    //     || !enemyPiece->getColor() && !this->getColor())
+    //     return false;
+    // }
+    // if((abs(this->getXCoord() - newX) != 0 && this->getYCoord() - newY == 0)
+    //  || (abs(this->getXCoord() - newX) == 0 && this->getYCoord() - newY != 0)){
+    //     return true;
+    // }   
+    // return false; 
+
+    //if both old x and y coords are same as new x and y coords
+    // or if the piece at the new coords is the same color as the rook
+    //  return false
+    if ((this->getXCoord() == newX && this->getYCoord() == newY)
+     || (board.getPiece(newX, newY)->getColor() == this->getColor())) {
         return false;
     }
-    if((abs(this->getXCoord() - newX) != 0 && this->getYCoord() - newY == 0)
-     || (abs(this->getXCoord() - newX) == 0 && this->getYCoord() - newY != 0)){
-        return true;
-    }   
-    return false; 
+
+    //check to see if there are no pieces in the way
+    //horizontal movement
+    if (this->getYCoord() == newY) {
+        for (int i = this->getXCoord(); i != newX; i += (newX - this->getXCoord()) / abs(newX - this->getXCoord())) {
+            if (!board.isFree(i, newY)) {
+                return false;
+            }
+        }
+    } else if (this->getXCoord() == newX) {
+        //vertical movement
+        for (int i = this->getYCoord(); i != newY; i += (newY - this->getYCoord()) / abs(newY - this->getYCoord())) {
+            if (!board.isFree(newX, i)) {
+                return false;
+            }
+        }
+    } else {
+        return false;
+    }
+
+    return true;
 }
 bool Knight::move(int newX, int newY, Board &board) {   
     if(!board.isFree(newX, newY)){
