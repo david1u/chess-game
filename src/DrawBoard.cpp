@@ -1,3 +1,7 @@
+#include <iostream>
+#include <iomanip>
+#include "../header/Piece.hpp"
+#include "../header/Board.hpp"
 #include "../header/DrawBoard.hpp"
 
 void draw_board::printBoard(const Board& board)

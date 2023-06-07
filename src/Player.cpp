@@ -1,8 +1,12 @@
-#include "Player.hpp"
+#include "../header/Player.hpp"
 #include <map>
 
 using namespace std;
 
+Player::Player(string name, bool color){
+    this->name = name;
+    blackWhite = color;
+}
 
 bool Player::getColor() {
     return blackWhite;
@@ -23,11 +27,11 @@ bool Player::makeMove(Board* board) {
     }
 
     // Check if you are moving your own piece
-    if(board->getPiece(start.fist, start.second)->getColor() != this->getColor()) {
+
+    if(board->getPiece(start.first, start.second)->getColor() != this->getColor()) {
             cout << "Not a valid piece to move or no piece exists\n";
             return false;
     }
-
 
     Piece* piece = board->getPiece(start.first, start.second); 
 
@@ -42,7 +46,7 @@ bool Player::makeMove(Board* board) {
     }
 
     // Check if it's a valid move 
-    if(!(piece->move(dest.first, dest.second))) {
+    if(!(piece->move(dest.first, dest.second, board))) {
         return false;
     }
 
@@ -52,18 +56,10 @@ bool Player::makeMove(Board* board) {
         addEliminated(toBeRemoved);
     }
 
-    updateBoard(dest.first, dest.second, piece);
+    board->updateBoard(dest.first, dest.second, piece);
     
     // move successful
     return true;
-
-Player::Player(std::string name, bool player){
-    
-}
-
-void Player::makeMove() {
-
-
 }
 
 void Player::surrender() {
@@ -88,8 +84,6 @@ void Player::showEliminated() const{
     cout << "\n";
 }
 
+// ?? is this
 Player::~Player() {
-    for (unsigned i = 0; i < eliminated.size(); i++) {
-        delete eliminated.at(i);
-    }
 }

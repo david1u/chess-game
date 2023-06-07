@@ -18,6 +18,8 @@ public:
 	bool isFree(int row, int col) const;
 
 	void updateBoard(int newX, int newY, Piece* piece);
+
+	~Board(); 
 };
 
 

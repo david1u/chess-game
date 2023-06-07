@@ -2,14 +2,27 @@
 #include "../header/Board.hpp"
 #include <cstdlib>
 
+std::vector<std::pair<int, int>> Piece::getPossibleMoves(Board* board) {
+    std::vector<std::pair<int, int>> moves;
 
-bool Pawn::move(int newX, int newY, Board &board) {
+        for (int x = 0; x < 8; ++x) {
+            for (int y = 0; y < 8; ++y) {
+                if (move(x, y, board)) {
+                    moves.push_back(std::make_pair(x, y));
+                }
+            }
+        }
+
+    return moves;
+}
+
+bool Pawn::move(int newX, int newY, Board* board) {
     if (enPassant) {
         return true;
     }
     
-    if(!board.isFree(newX, newY)){
-        Piece* enemyPiece = board.getPiece(newX, newY);
+    if(!board->isFree(newX, newY)){
+        Piece* enemyPiece = board->getPiece(newX, newY);
         if(enemyPiece->getColor() && this->getColor()
         || !enemyPiece->getColor() && !this->getColor())
         return false;
@@ -45,15 +58,15 @@ bool Pawn::move(int newX, int newY, Board &board) {
 
     return false;
 }
-bool Pawn::enPassant(int newX, int newY, Board &board) {
+bool Pawn::enPassant(int newX, int newY, Board* board) {
     //pawns must be next to each other
     //pawns must be enemies
     //enemy piece must have moved 2 spaces in 1 turn
-    Piece* enemyPiece = board.getPiece(newX, this->getYCoord());
-    if (enemyPiece == BLACK_PAWN || enemyPiece == WHITE_PAWN) {
+    Piece* enemyPiece = board->getPiece(newX, this->getYCoord());
+    if (enemyPiece->getName() == BLACK_PAWN || enemyPiece->getName() == WHITE_PAWN) {
         if (this->getColor() != enemyPiece->getColor()) {
             if (enemyPiece->getMoveCount() == 1 && (enemyPiece->getYCoord() == 4 || enemyPiece->getYCoord() == 5)) {
-                enemyPiece->setYCoord = newY;
+                enemyPiece->setYCoord(newY);
                 return true;
             }
         }
@@ -62,9 +75,9 @@ bool Pawn::enPassant(int newX, int newY, Board &board) {
     return false;
 }
 
-bool Rook::move(int newX, int newY, Board &board) { 
-    if(!board.isFree(newX, newY)){
-        Piece* enemyPiece = board.getPiece(newX, newY);
+bool Rook::move(int newX, int newY, Board* board) { 
+    if(!board->isFree(newX, newY)){
+        Piece* enemyPiece = board->getPiece(newX, newY);
         if(enemyPiece->getColor() && this->getColor()
         || !enemyPiece->getColor() && !this->getColor())
         return false;
@@ -75,9 +88,9 @@ bool Rook::move(int newX, int newY, Board &board) {
     }   
     return false; 
 }
-bool Knight::move(int newX, int newY, Board &board) {   
-    if(!board.isFree(newX, newY)){
-        Piece* enemyPiece = board.getPiece(newX, newY);
+bool Knight::move(int newX, int newY, Board* board) {   
+    if(!board->isFree(newX, newY)){
+        Piece* enemyPiece = board->getPiece(newX, newY);
         if(enemyPiece->getColor() && this->getColor()
         || !enemyPiece->getColor() && !this->getColor())
         return false;
@@ -88,9 +101,9 @@ bool Knight::move(int newX, int newY, Board &board) {
     }
     return false; 
 }
-bool Bishop::move(int newX, int newY, Board &board) {  
-    if(!board.isFree(newX, newY)){
-        Piece* enemyPiece = board.getPiece(newX, newY);
+bool Bishop::move(int newX, int newY, Board* board) {  
+    if(!board->isFree(newX, newY)){
+        Piece* enemyPiece = board->getPiece(newX, newY);
         if(enemyPiece->getColor() && this->getColor()
         || !enemyPiece->getColor() && !this->getColor())
         return false;
@@ -99,9 +112,9 @@ bool Bishop::move(int newX, int newY, Board &board) {
         return true; 
     return false;
 }
-bool Queen::move(int newX, int newY, Board &board) { 
-    if(!board.isFree(newX, newY)){
-        Piece* enemyPiece = board.getPiece(newX, newY);
+bool Queen::move(int newX, int newY, Board* board) { 
+    if(!board->isFree(newX, newY)){
+        Piece* enemyPiece = board->getPiece(newX, newY);
         if(enemyPiece->getColor() && this->getColor()
         || !enemyPiece->getColor() && !this->getColor())
         return false;
@@ -115,9 +128,9 @@ bool Queen::move(int newX, int newY, Board &board) {
     }    
     return false; 
 }
-bool King::move(int newX, int newY, Board &board) {  
-    if(!board.isFree(newX, newY)){
-        Piece* enemyPiece = board.getPiece(newX, newY);
+bool King::move(int newX, int newY, Board* board) {  
+    if(!board->isFree(newX, newY)){
+        Piece* enemyPiece = board->getPiece(newX, newY);
         if(enemyPiece->getColor() && this->getColor()
         || !enemyPiece->getColor() && !this->getColor())
         return false;
