@@ -12,14 +12,20 @@ bool Player::getColor() {
     return blackWhite;
 }
 
+//bool Player::getInput() {
+
+// }
 bool Player::makeMove(Board* board) {
     char letter;
     int number;
     pair<int, int> start, dest;
+    cout << "The player is white: " << getColor() << endl;
     cout << "Enter starting position (letter number): ";
     cin >> letter >> number;
-    start = make_pair(letterToNum[letter], number - 1);
-
+    cout << "we got here";
+    start = make_pair(letterToNum[letter], numToNum[number]);
+    cout << "made the pair" << endl;
+    cout << start.second << ", " << start.first << endl;
     // Check if the soruce coordinates are on the board
     if (start.first < 0 || start.first > 7 || start.second < 0 || start.second > 7) {
             cout << "Invalid starting position.\n";
@@ -28,16 +34,28 @@ bool Player::makeMove(Board* board) {
 
     // Check if you are moving your own piece
 
-    if(board->getPiece(start.first, start.second)->getColor() != this->getColor()) {
+    Piece* piece = board->getPiece(start.second, start.first); 
+    cout << "This piece is: " << piece->getName() << endl;
+    cout << "The color of this piece is: " << piece->getColor() << endl; 
+    cout << "The 'x' coord is: " << piece->getXCoord() << endl;
+    cout << "The 'y' coord is: " << piece->getYCoord() << endl;
+
+    if(piece == nullptr){
+        cout << "This is a nullptr" << endl;
+    }
+
+    if(board->getPiece(start.second, start.first)->getColor() != this->getColor()) {
             cout << "Not a valid piece to move or no piece exists\n";
             return false;
     }
 
-    Piece* piece = board->getPiece(start.first, start.second); 
+    //Piece* piece = board->getPiece(start.first, start.second); 
 
     cout << "Enter destination position (letter number): ";
     cin >> letter >> number;
-    dest = make_pair(letterToNum[letter], number - 1);
+    
+    dest = make_pair(letterToNum[letter], numToNum[number]);
+    cout << "made the pair" << endl;
 
     // Check if the destination is on the board
     if (dest.first < 0 || dest.first > 7 || dest.second < 0 || dest.second > 7) {
@@ -45,20 +63,25 @@ bool Player::makeMove(Board* board) {
             return false;
     }
 
-    // Check if it's a valid move 
-    if(!(piece->move(dest.first, dest.second, board))) {
+    cout << "got past validating on board" << endl;
+
+    // Check if it's a valid move  (this is broken)
+    if(!(piece->move(dest.second, dest.first, board))) {
+        cout << "Not a valid move" << endl;
         return false;
     }
+    cout << "got past validatin" << endl;
 
     // Check for collision
-    if(!board->isFree(dest.first, dest.second)){
-        Piece* toBeRemoved = board->getPiece(dest.first, dest.second);
+    if(!board->isFree(dest.second, dest.first)){
+        Piece* toBeRemoved = board->getPiece(dest.second, dest.first);
         addEliminated(toBeRemoved);
     }
 
-    board->updateBoard(dest.first, dest.second, piece);
+    board->updateBoard(dest.second, dest.first, piece);
     
     // move successful
+    std::cout << "we did it reddit" << std::endl;
     return true;
 }
 
