@@ -40,6 +40,10 @@ void Menu::chessDisplay() const {
     }
 }
 
+string getMenuName() const {
+    return this->menuName;
+}
+
 void MainMenu::displayChoices() {
     cout << "        [2] Two Player" << endl;
     cout << "        [L]oad Game" << endl;
