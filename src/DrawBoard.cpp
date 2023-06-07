@@ -1,5 +1,6 @@
 #include <iostream>
 #include <iomanip>
+#include "../header/Piece.hpp"
 #include "../header/Board.hpp"
 
 void printBoard(const Board& board)

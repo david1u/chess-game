@@ -124,11 +124,11 @@ void GameInitiateMenu::menuDisplay() {
     getline(cin, p2);
 }
 
-void GameInitiateMenu::getPlayerOneName() const {
+string GameInitiateMenu::getPlayerOneName() const {
     return p1;
 }
 
-void GameInitiateMenu::getPlayerTwoName() const {
+string GameInitiateMenu::getPlayerTwoName() const {
     return p2;
 }
 

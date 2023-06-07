@@ -71,3 +71,4 @@ void Board::updateBoard(int newX, int newY, Piece* piece){
     piece->setYCoord(newY);
     
 }
+
