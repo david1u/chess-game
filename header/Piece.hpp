@@ -38,8 +38,8 @@ public:
    std::vector<std::pair<int, int>> getPossibleMoves(Board* board);
    int getXCoord() const { return xCoord; }
    int getYCoord() const { return yCoord; }
-   int setXCoord(int newX)  { xCoord = newX; }
-   int setYCoord(int newY)  { yCoord = newY; }
+   void setXCoord(int newX)  { xCoord = newX; }
+   void setYCoord(int newY)  { yCoord = newY; }
    std::string getName() const { return name; }
    bool getColor() const { return white; }
    int getMoveCount() const {return moveCount; }

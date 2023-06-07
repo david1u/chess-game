@@ -1,10 +1,6 @@
 #include "../header/Board.hpp"
 #include "../header/Piece.hpp"
 
-int main(){
-    
-}
-
 Board::Board() {
     board.resize(8); // set board to have 8 rows
 
@@ -72,3 +68,11 @@ void Board::updateBoard(int newX, int newY, Piece* piece){
     
 }
 
+Board::~Board() {
+    for (int row = 0; row < 8; ++row) {
+        for (int col = 0; col < 8; ++col) {
+            delete board[row][col]; 
+            board[row][col] = nullptr; // It's a good practice to set the pointer to nullptr after deleting
+        }
+    }
+}

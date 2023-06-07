@@ -1,0 +1,3 @@
+/data/class/classes/mchun078/cs100/final-project-mchun078-mibra033-dlu046-akoth013/CMakeFiles/rebuild_cache.dir
+/data/class/classes/mchun078/cs100/final-project-mchun078-mibra033-dlu046-akoth013/CMakeFiles/chess.dir
+/data/class/classes/mchun078/cs100/final-project-mchun078-mibra033-dlu046-akoth013/CMakeFiles/edit_cache.dir

@@ -17,7 +17,7 @@ std::vector<std::pair<int, int>> Piece::getPossibleMoves(Board* board) {
 }
 
 bool Pawn::move(int newX, int newY, Board* board) {
-    if (enPassant) {
+    if (enPassant(newX, newY, board)) {
         return true;
     }
     

@@ -1,10 +1,25 @@
 #include "../header/Game.hpp"
+#include "../header/DrawBoard.hpp"
 
 Game::Game(std::string p1Name, std::string p2Name) {
     board = new Board();  // Initialize the board object
     player1 = new Player(p1Name, true);  // Initialize player 1 as white
     player2 = new Player(p2Name, false);  // Initialize player 2 as black
     menu = nullptr; // default for now
+
+    auto chessBoard = board->getBoard();
+
+    for (const auto& row : chessBoard) {
+        for (const auto& piece : row) {
+            if (piece != nullptr) {  // Ignore empty squares
+                if (piece->getColor()) { // true for white
+                    whitePieces.push_back(piece);
+                } else { // false for black
+                    blackPieces.push_back(piece);
+                }
+            }
+        }
+    }
 }
 
 Menu* Game::getMenu() const{
@@ -28,8 +43,52 @@ Player* Game::getPlayerTwo() const {
 }
 
 void Game::run() {
+
+    King* whiteKing = nullptr;
+    King* blackKing = nullptr;
+
+    for (auto& piece : whitePieces) {
+        if (piece->getName() == WHITE_KING) { 
+            King* whiteKing = dynamic_cast<King*>(piece);
+            break; // stop the loop as soon as we found the King
+        }
+    }
+
+    for (auto& piece : blackPieces) {
+        if (piece->getName() == BLACK_KING) { 
+            King* blackKing = dynamic_cast<King*>(piece);
+            break; // stop the loop as soon as we found the King
+        }
+    }
     // Game logic goes here
     // implement the game loop, handle player turns, moves, and interactions with the board
+
+    // Draw board
+    while(true){
+        draw_board::printBoard(board);
+        while(!player1->makeMove(board)){
+            std::cout << "Failed to make move for Player 1" << endl;
+        }
+        if (isCheckmate(whiteKing, whitePieces, blackPieces)) {
+            std::cout << "Black wins by checkmate.\n";
+            break;
+        } else if (isCheckmate(blackKing, blackPieces, whitePieces)) {
+            std::cout << "White wins by checkmate.\n";
+            break;
+        }
+        
+        draw_board::printBoard(board);
+        while(!player2->makeMove(board)){
+            std::cout << "Failed to make move for Player 2" << endl;
+        }
+        if (isCheckmate(whiteKing, whitePieces, blackPieces)) {
+            std::cout << "Black wins by checkmate.\n";
+            break;
+        } else if (isCheckmate(blackKing, blackPieces, whitePieces)) {
+            std::cout << "White wins by checkmate.\n";
+            break;
+        }
+    }
 }
 
 Game::~Game() {
