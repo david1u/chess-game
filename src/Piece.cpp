@@ -63,15 +63,17 @@ bool Pawn::enPassant(int newX, int newY, Board* board) {
     //pawns must be enemies
     //enemy piece must have moved 2 spaces in 1 turn
     Piece* enemyPiece = board->getPiece(newX, this->getYCoord());
-    if (enemyPiece->getName() == BLACK_PAWN || enemyPiece->getName() == WHITE_PAWN) {
-        if (this->getColor() != enemyPiece->getColor()) {
-            if (enemyPiece->getMoveCount() == 1 && (enemyPiece->getYCoord() == 4 || enemyPiece->getYCoord() == 5)) {
-                enemyPiece->setYCoord(newY);
-                return true;
+    if (enemyPiece != nullptr) {
+        if (enemyPiece->getName() == BLACK_PAWN || enemyPiece->getName() == WHITE_PAWN) {
+            if (this->getColor() != enemyPiece->getColor()) {
+                if (enemyPiece->getMoveCount() == 1 && (enemyPiece->getYCoord() == 4 || enemyPiece->getYCoord() == 5)) {
+                    enemyPiece->setYCoord(newY);
+                    return true;
+                }
             }
         }
     }
-
+    
     return false;
 }
 
