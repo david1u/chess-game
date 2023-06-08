@@ -21,6 +21,8 @@ public:
 
 	void updateBoard(int row, int col, Piece* piece);
 
+	void removePiece(Piece* piece);
+
 	~Board(); 
 };
 

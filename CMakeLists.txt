@@ -2,6 +2,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
 
 project(final-project)
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0")
 
 ADD_EXECUTABLE(chess
     src/main.cpp 

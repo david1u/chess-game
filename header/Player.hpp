@@ -28,7 +28,7 @@ class Player {
       bool getColor();
       bool makeMove(Board*);
       void surrender();
-      void addEliminated(Piece*);
+      void addEliminated(Piece*, Board*);
       void showEliminated() const;
       ~Player();
 };

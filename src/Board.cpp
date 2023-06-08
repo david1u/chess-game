@@ -70,6 +70,13 @@ void Board::updateBoard(int row, int col, Piece* piece){
     piece->setYCoord(row);
 }
 
+void Board::removePiece(Piece* piece) {
+    int col = piece->getXCoord();
+    int row = piece->getYCoord();
+    board[row][col] = nullptr;
+}
+
+
 Board::~Board() {
     for (int row = 0; row < 8; ++row) {
         for (int col = 0; col < 8; ++col) {
