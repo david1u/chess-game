@@ -54,6 +54,7 @@ public:
       white = isWhite;
       this->xCoord = xCoord;
       this->yCoord = yCoord;
+      moveCount = 0;
    }
    bool move(int newX, int newY, Board* board) override;
    bool enPassant(int newX, int newY, Board* board) ;

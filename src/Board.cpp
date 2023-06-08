@@ -53,19 +53,21 @@ std::vector<std::vector<Piece*>> Board::getBoard() const{
     return board;
 }
 
-Piece* Board::getPiece(int x, int y) const {
-	return board[x][y];
+Piece* Board::getPiece(int row, int col) const {
+	return board[row][col];
 }
 
 bool Board::isFree(int row, int col) const {
 	return getPiece(row, col) == nullptr;
 }
 
-void Board::updateBoard(int newX, int newY, Piece* piece){
-    board[newX][newY] = piece;
-    piece->setXCoord(newX);
-    piece->setYCoord(newY);
-    
+void Board::updateBoard(int row, int col, Piece* piece){
+    int oldX = piece->getXCoord();
+    int oldY = piece->getYCoord();
+    board[row][col] = piece;
+    board[oldY][oldX] = nullptr;
+    piece->setXCoord(col);
+    piece->setYCoord(row);
 }
 
 Board::~Board() {

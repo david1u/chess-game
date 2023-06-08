@@ -66,7 +66,8 @@ bool Player::makeMove(Board* board) {
     cout << "got past validating on board" << endl;
 
     // Check if it's a valid move  (this is broken)
-    if(!(piece->move(dest.second, dest.first, board))) {
+    //cout << "passing in row: " << dest.second << " and col: " << dest.first << endl;
+    if(!(piece->move(dest.first, dest.second, board))) {
         cout << "Not a valid move" << endl;
         return false;
     }

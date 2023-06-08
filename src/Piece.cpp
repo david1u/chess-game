@@ -1,6 +1,7 @@
 #include "../header/Piece.hpp"
 #include "../header/Board.hpp"
 #include <cstdlib>
+#include <iostream>
 
 std::vector<std::pair<int, int>> Piece::getPossibleMoves(Board* board) {
     std::vector<std::pair<int, int>> moves;
@@ -17,9 +18,10 @@ std::vector<std::pair<int, int>> Piece::getPossibleMoves(Board* board) {
 }
 
 bool Pawn::move(int newX, int newY, Board* board) {
-    if (enPassant(newX, newY, board)) {
-        return true;
-    }
+    std::cout << "Using the pawn's move check" << std::endl;
+    // if (enPassant(newX, newY, board)) { //seg faulted
+    //     return true;
+    // }
     
     if(!board->isFree(newX, newY)){
         Piece* enemyPiece = board->getPiece(newX, newY);

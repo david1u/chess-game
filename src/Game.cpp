@@ -69,25 +69,25 @@ void Game::run() {
         while(!player1->makeMove(board)){
             std::cout << "Failed to make move for Player 1" << endl;
         }
-        if (isCheckmate(whiteKing, whitePieces, blackPieces)) {
-            std::cout << "Black wins by checkmate.\n";
-            break;
-        } else if (isCheckmate(blackKing, blackPieces, whitePieces)) {
-            std::cout << "White wins by checkmate.\n";
-            break;
-        }
+        // if (isCheckmate(whiteKing, whitePieces, blackPieces)) {
+        //     std::cout << "Black wins by checkmate.\n";
+        //     break;
+        // } else if (isCheckmate(blackKing, blackPieces, whitePieces)) {
+        //     std::cout << "White wins by checkmate.\n";
+        //     break;
+        // }
         
         draw_board::printBoard(board);
         while(!player2->makeMove(board)){
             std::cout << "Failed to make move for Player 2" << endl;
         }
-        if (isCheckmate(whiteKing, whitePieces, blackPieces)) {
-            std::cout << "Black wins by checkmate.\n";
-            break;
-        } else if (isCheckmate(blackKing, blackPieces, whitePieces)) {
-            std::cout << "White wins by checkmate.\n";
-            break;
-        }
+        // if (isCheckmate(whiteKing, whitePieces, blackPieces)) {
+        //     std::cout << "Black wins by checkmate.\n";
+        //     break;
+        // } else if (isCheckmate(blackKing, blackPieces, whitePieces)) {
+        //     std::cout << "White wins by checkmate.\n";
+        //     break;
+        // }
     }
 }
 
@@ -100,7 +100,7 @@ Game::~Game() {
 
 bool Game::inCheck(King* king, vector<Piece*> enemyPieces) {
     for(Piece* piece : enemyPieces) {
-        if(piece->move(king->getXCoord(), king->getYCoord(), board)) {
+        if(piece->move(king->getYCoord(), king->getXCoord(), board)) {
             return true;
         }
     }
@@ -108,29 +108,29 @@ bool Game::inCheck(King* king, vector<Piece*> enemyPieces) {
 }
 
 bool Game::canEscapeCheck(King* king, vector<Piece*> enemyPieces) {
-    int startX = king->getXCoord();
-    int startY = king->getYCoord();
+    int col = king->getXCoord();
+    int row = king->getYCoord();
     for(const auto& pair: king->getPossibleMoves(board)){
-        board->updateBoard(pair.first, pair.second, king);
+        board->updateBoard(pair.second, pair.first, king);
         if(!inCheck(king, enemyPieces)){
             return true;
         }
-        board->updateBoard(startX, startY, king);
+        board->updateBoard(row, col, king);
     }
     return false;
 }
 
 bool Game::checkCanBeBlocked(King* king, vector<Piece*> myPieces, vector<Piece*> enemyPieces) {
     for (Piece* piece : myPieces) {
-        int startX = piece->getXCoord();
-        int startY = piece->getYCoord();
+        int col = piece->getXCoord();
+        int row = piece->getYCoord();
         for (const auto& pair : piece->getPossibleMoves(board)) {
-            board->updateBoard(pair.first, pair.second, piece);
+            board->updateBoard(pair.second, pair.first, piece);
             if (!inCheck(king, enemyPieces)) {
-                board->updateBoard(startX, startY, king);
+                board->updateBoard(row, col, king);
                 return true;
             }
-            board->updateBoard(startX, startY, king);
+            board->updateBoard(row, col, king);
         }
     }
     return false;

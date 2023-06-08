@@ -2,6 +2,8 @@
 #define __BOARD_HPP__
 
 #include <vector>
+#include <string>
+#include <iostream>
 
 class Piece;
 
@@ -13,11 +15,11 @@ public:
 
 	std::vector<std::vector<Piece*>> getBoard() const;
 
-	Piece* getPiece(int x, int y) const;
+	Piece* getPiece(int row, int col) const;
 
 	bool isFree(int row, int col) const;
 
-	void updateBoard(int newX, int newY, Piece* piece);
+	void updateBoard(int row, int col, Piece* piece);
 
 	~Board(); 
 };
