@@ -27,6 +27,7 @@ int main(int argv, char** argc) {
             //currentMenu is LoadMenu
         }
         
+        delete currentMenu;
         //this will restart at StartMenu. Players have to quit using the [Q] option.
     }
 
