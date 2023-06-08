@@ -18,7 +18,7 @@ std::vector<std::pair<int, int>> Piece::getPossibleMoves(Board* board) {
 }
 
 bool Pawn::move(int newCol, int newRow, Board* board) {
-    std::cout << "Using the pawn's move check" << std::endl;
+    //std::cout << "Using the pawn's move check" << std::endl;
 
     // Calculate the change in x and y coordinates
     int dcol = newCol - this->getXCoord();
@@ -36,10 +36,17 @@ bool Pawn::move(int newCol, int newRow, Board* board) {
     // Pawns can only move forward one square, unless it's their first move
     // if(abs(dy) > 1 || abs(dx) > 1)
     //     return false;
-    if(abs(drow) == 2 && moveCount != 0) {
+    if(abs(drow) == 2 && abs(dcol) > 0) {
         return false;
     }
 
+    if(abs(drow) < 1 && abs(dcol) > 0) {
+        return false;
+    }
+
+    if(abs(drow) == 2 && moveCount != 0) {
+        return false;
+    }
     // Pawns can only capture to the diagonals
     if(abs(dcol) == 1 && abs(drow) == 1) {
         if(board->isFree(newRow, newCol)) { // If the diagonal square is free, it's not a valid capture
@@ -54,22 +61,22 @@ bool Pawn::move(int newCol, int newRow, Board* board) {
         }
     }
 
-    if(abs(dcol) == 1 && drow == (this->getColor() ? -1 : 1)) {
-        if(board->isFree(newRow, newCol)) {
-            // The destination square is free, so this could be an en passant capture
-            Piece* lastMovedPiece = board->getLastMovedPiece();
-            if(lastMovedPiece != nullptr
-               && typeid(*lastMovedPiece) == typeid(Pawn)
-               && lastMovedPiece->getColor() != this->getColor()
-               && lastMovedPiece->getMoveCount() == 1
-               && lastMovedPiece->getXCoord() == newCol
-               && lastMovedPiece->getYCoord() == (this->getColor() ? newRow + 1 : newRow - 1)) {
-                // The last piece moved was an opponent's pawn that moved two squares forward
-                // and ended up adjacent to this pawn, so this is a valid en passant capture
-                return true;
-            }
-        }
-    }
+    // if(abs(dcol) == 1 && drow == (this->getColor() ? -1 : 1)) {
+    //     if(board->isFree(newRow, newCol)) {
+    //         // The destination square is free, so this could be an en passant capture
+    //         Piece* lastMovedPiece = board->getLastMovedPiece();
+    //         if(lastMovedPiece != nullptr
+    //            && typeid(*lastMovedPiece) == typeid(Pawn)
+    //            && lastMovedPiece->getColor() != this->getColor()
+    //            && lastMovedPiece->getMoveCount() == 1
+    //            && lastMovedPiece->getXCoord() == newCol
+    //            && lastMovedPiece->getYCoord() == (this->getColor() ? newRow + 1 : newRow - 1)) {
+    //             // The last piece moved was an opponent's pawn that moved two squares forward
+    //             // and ended up adjacent to this pawn, so this is a valid en passant capture
+    //             return true;
+    //         }
+    //     }
+    // }
 
     // If the pawn is moving straight forward, the destination square must be free
     if(dcol == 0 && !board->isFree(newRow, newCol)) {
@@ -78,7 +85,7 @@ bool Pawn::move(int newCol, int newRow, Board* board) {
         
 
     // If all checks passed, the move is valid
-    moveCount++;
+    std::cout << "Valid move found" << std::endl;
     return true;
 }
 

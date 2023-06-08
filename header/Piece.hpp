@@ -43,6 +43,7 @@ public:
    std::string getName() const { return name; }
    bool getColor() const { return white; }
    int getMoveCount() const {return moveCount; }
+   void addMoveCount() {moveCount++; }
 };
 
 class Pawn : public Piece
