@@ -15,6 +15,7 @@ class Menu {
  public:
     Menu(string name) : menuName(name) {}
     ~Menu();
+    string getMenuName() const;
 
     virtual void menuDisplay();
     virtual Menu* chooseOption() = 0;

@@ -1,4 +1,5 @@
 #include "../header/Menu.hpp"
+#include "../header/Game.hpp"
 using namespace std;
 #include <iostream>
 
@@ -22,6 +23,9 @@ int main(int argv, char** argc) {
             //GameMenu p1, and p2 are populated with the player names.
             //Use GameMenu->getPlayerOneName(), and getPlayerTwoName().
             //This is where we should initiate Game class with player names as parameters.
+            Game* game = new Game(GameMenu->getPlayerOneName(), GameMenu->getPlayerTwoName());
+            game->run();
+
         }
         else if (dynamic_cast<LoadMenu*>(currentMenu) != nullptr) {
             //currentMenu is LoadMenu

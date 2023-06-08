@@ -40,6 +40,10 @@ void Menu::chessDisplay() const {
     }
 }
 
+string Menu::getMenuName() const {
+    return this->menuName;
+}
+
 void MainMenu::displayChoices() {
     cout << "        [2] Two Player" << endl;
     cout << "        [L]oad Game" << endl;
@@ -124,11 +128,11 @@ void GameInitiateMenu::menuDisplay() {
     getline(cin, p2);
 }
 
-void GameInitiateMenu::getPlayerOneName() const {
+string GameInitiateMenu::getPlayerOneName() const {
     return p1;
 }
 
-void GameInitiateMenu::getPlayerTwoName() const {
+string GameInitiateMenu::getPlayerTwoName() const {
     return p2;
 }
 

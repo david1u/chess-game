@@ -17,6 +17,7 @@
 #define WHITE_PAWN   "\u265F"   // ♟
 
 #include <string>
+#include <vector>
 #include "Board.hpp"
 
 class Board;
@@ -33,11 +34,12 @@ protected:
    int moveCount;
 
 public:
-   virtual bool move(int newX, int newY, Board &board) = 0;
+   virtual bool move(int newX, int newY, Board* board) = 0;
+   std::vector<std::pair<int, int>> getPossibleMoves(Board* board);
    int getXCoord() const { return xCoord; }
    int getYCoord() const { return yCoord; }
-   int setXCoord(int newX) const { xCoord = newX; }
-   int setYCoord(int newY) const { yCoord = newY; }
+   void setXCoord(int newX)  { xCoord = newX; }
+   void setYCoord(int newY)  { yCoord = newY; }
    std::string getName() const { return name; }
    bool getColor() const { return white; }
    int getMoveCount() const {return moveCount; }
@@ -46,70 +48,83 @@ public:
 class Pawn : public Piece
 {
 public:
-   Pawn(bool isWhite)
+   Pawn(bool isWhite, int xCoord, int yCoord)
    {
       name = isWhite ? WHITE_PAWN : BLACK_PAWN;
       white = isWhite;
+      this->xCoord = xCoord;
+      this->yCoord = yCoord;
+      moveCount = 0;
    }
-   bool move(int newX, int newY, Board &board) override;
-   bool enPassant(int newX, int newY, Board &board) ;
+   bool move(int newX, int newY, Board* board) override;
+   bool enPassant(int newX, int newY, Board* board) ;
    void pawnPromotion() ;
 };
 
 class Rook : public Piece
 {
 public:
-   Rook(bool isWhite)
+   Rook(bool isWhite, int xCoord, int yCoord)
    {
       name = isWhite ? WHITE_ROOK : BLACK_ROOK;
       white = isWhite;
+      this->xCoord = xCoord;
+      this->yCoord = yCoord;
    }
-   bool move(int newX, int newY, Board &board) override;
+   bool move(int newX, int newY, Board* board) override;
 };
 
 class Knight : public Piece
 {
 public:
-   Knight(bool isWhite)
+   Knight(bool isWhite, int xCoord, int yCoord)
    {
       name = isWhite ? WHITE_KNIGHT : BLACK_KNIGHT;
       white = isWhite;
+      this->xCoord = xCoord;
+      this->yCoord = yCoord;
    }
-   bool move(int newX, int newY, Board &board) override;
+   bool move(int newX, int newY, Board* board) override;
 };
 
 class Bishop : public Piece
 {
 public:
-   Bishop(bool isWhite)
+   Bishop(bool isWhite, int xCoord, int yCoord)
    {
       name = isWhite ? WHITE_BISHOP : BLACK_BISHOP;
       white = isWhite;
+      this->xCoord = xCoord;
+      this->yCoord = yCoord;
    }
-   bool move(int newX, int newY, Board &board) override;
+   bool move(int newX, int newY, Board* board) override;
 };
 
 class Queen : public Piece
 {
 public:
-   Queen(bool isWhite)
+   Queen(bool isWhite, int xCoord, int yCoord)
    {
       name = isWhite ? WHITE_QUEEN : BLACK_QUEEN;
       white = isWhite;
+      this->xCoord = xCoord;
+      this->yCoord = yCoord;
    }
-   bool move(int newX, int newY, Board &board) override;
+   bool move(int newX, int newY, Board* board) override;
 };
 
 class King : public Piece
 {
 public:
-   King(bool isWhite)
+   King(bool isWhite, int xCoord, int yCoord)
    {
       name = isWhite ? WHITE_KING : BLACK_KING;
       white = isWhite;
+      this->xCoord = xCoord;
+      this->yCoord = yCoord;
    }
-   bool move(int newX, int newY, Board &board) override;
-   bool castle(int newX, int newY, Board &board) ;
+   bool move(int newX, int newY, Board* board) override;
+   bool castle(int newX, int newY, Board* board) ;
 
 };
 
