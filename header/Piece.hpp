@@ -44,6 +44,7 @@ public:
    bool getColor() const { return white; }
    int getMoveCount() const {return moveCount; }
    void incMoveCount() {moveCount++; }
+   //void addMoveCount() {moveCount++; }
 };
 
 class Pawn : public Piece

@@ -18,6 +18,8 @@ std::vector<std::pair<int, int>> Piece::getPossibleMoves(Board &board) {
 }
 
 bool Pawn::move(int newCol, int newRow, Board &board) const{
+
+//bool Pawn::move(int newCol, int newRow, Board* board) {
     //std::cout << "Using the pawn's move check" << std::endl;
 
     // Calculate the change in x and y coordinates
@@ -36,10 +38,17 @@ bool Pawn::move(int newCol, int newRow, Board &board) const{
     // Pawns can only move forward one square, unless it's their first move
     // if(abs(dy) > 1 || abs(dx) > 1)
     //     return false;
-    if(abs(drow) == 2 && moveCount != 0) {
+    if(abs(drow) == 2 && abs(dcol) > 0) {
         return false;
     }
 
+    if(abs(drow) < 1 && abs(dcol) > 0) {
+        return false;
+    }
+
+    if(abs(drow) == 2 && moveCount != 0) {
+        return false;
+    }
     // Pawns can only capture to the diagonals
     if(abs(dcol) == 1 && abs(drow) == 1) {
         if(board.isFree(newRow, newCol)) { // If the diagonal square is free, it's not a valid capture
@@ -53,6 +62,7 @@ bool Pawn::move(int newCol, int newRow, Board &board) const{
             }
         }
     }
+
 
     //if(abs(dcol) == 1 && drow == (this->getColor() ? -1 : 1)) {
     //    if(board.isFree(newRow, newCol)) {
@@ -71,6 +81,7 @@ bool Pawn::move(int newCol, int newRow, Board &board) const{
     //    }
     //}
 
+
     // If the pawn is moving straight forward, the destination square must be free
     if(dcol == 0 && !board.isFree(newRow, newCol)) {
         return false;
@@ -80,6 +91,7 @@ bool Pawn::move(int newCol, int newRow, Board &board) const{
     // If all checks passed, the move is valid
     Piece* currentPiece = board.getPiece(this->getYCoord(), this->getXCoord());
     currentPiece->incMoveCount();
+    //std::cout << "Valid move found" << std::endl;
     return true;
 }
 
