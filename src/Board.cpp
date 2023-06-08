@@ -68,6 +68,7 @@ void Board::updateBoard(int row, int col, Piece* piece){
     board[oldY][oldX] = nullptr;
     piece->setXCoord(col);
     piece->setYCoord(row);
+    piece->addMoveCount();
 }
 
 void Board::removePiece(Piece* piece) {
