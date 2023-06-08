@@ -1,1 +1,0 @@
-/usr/bin/c++ -rdynamic CMakeFiles/chess.dir/src/main.cpp.o CMakeFiles/chess.dir/src/Board.cpp.o CMakeFiles/chess.dir/src/DrawBoard.cpp.o CMakeFiles/chess.dir/src/Game.cpp.o CMakeFiles/chess.dir/src/Menu.cpp.o CMakeFiles/chess.dir/src/Piece.cpp.o CMakeFiles/chess.dir/src/Player.cpp.o -o chess 
