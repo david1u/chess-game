@@ -22,10 +22,10 @@ bool Player::makeMove(Board* board) {
     cout << "The player is white: " << getColor() << endl;
     cout << "Enter starting position (letter number): ";
     cin >> letter >> number;
-    cout << "we got here";
+    //cout << "we got here";
     start = make_pair(letterToNum[letter], numToNum[number]);
-    cout << "made the pair" << endl;
-    cout << start.second << ", " << start.first << endl;
+    //cout << "made the pair" << endl;
+    //cout << start.second << ", " << start.first << endl;
     // Check if the soruce coordinates are on the board
     if (start.first < 0 || start.first > 7 || start.second < 0 || start.second > 7) {
             cout << "Invalid starting position.\n";
@@ -62,7 +62,7 @@ bool Player::makeMove(Board* board) {
     cin >> letter >> number;
     
     dest = make_pair(letterToNum[letter], numToNum[number]);
-    cout << "made the pair" << endl;
+    //cout << "made the pair" << endl;
 
     // Check if the destination is on the board
     if (dest.first < 0 || dest.first > 7 || dest.second < 0 || dest.second > 7) {
@@ -70,15 +70,15 @@ bool Player::makeMove(Board* board) {
             return false;
     }
 
-    cout << "got past validating on board" << endl;
+    //cout << "got past validating on board" << endl;
 
     // Check if it's a valid move  (this is broken)
     //cout << "passing in row: " << dest.second << " and col: " << dest.first << endl;
-    if(!(piece->move(dest.first, dest.second, board))) {
+    if(!(piece->move(dest.first, dest.second, *board))) {
         cout << "Not a valid move" << endl;
         return false;
     }
-    cout << "got past validatin" << endl;
+    //cout << "got past validatin" << endl;
 
     // Check for collision
     if(!board->isFree(dest.second, dest.first)){
@@ -89,7 +89,7 @@ bool Player::makeMove(Board* board) {
     board->updateBoard(dest.second, dest.first, piece);
     
     // move successful
-    std::cout << "we did it reddit" << std::endl;
+    //std::cout << "we did it reddit" << std::endl;
     return true;
 }
 

@@ -34,8 +34,8 @@ protected:
    int moveCount;
 
 public:
-   virtual bool move(int newX, int newY, Board* board) = 0;
-   std::vector<std::pair<int, int>> getPossibleMoves(Board* board);
+   virtual bool move(int newX, int newY, Board &board) const = 0;
+   std::vector<std::pair<int, int>> getPossibleMoves(Board &board);
    int getXCoord() const { return xCoord; }
    int getYCoord() const { return yCoord; }
    void setXCoord(int newX)  { xCoord = newX; }
@@ -43,7 +43,8 @@ public:
    std::string getName() const { return name; }
    bool getColor() const { return white; }
    int getMoveCount() const {return moveCount; }
-   void addMoveCount() {moveCount++; }
+   void incMoveCount() {moveCount++; }
+   //void addMoveCount() {moveCount++; }
 };
 
 class Pawn : public Piece
@@ -57,8 +58,8 @@ public:
       this->yCoord = yCoord;
       moveCount = 0;
    }
-   bool move(int newX, int newY, Board* board) override;
-   bool enPassant(int newX, int newY, Board* board) ;
+   bool move(int newX, int newY, Board &board) const override;
+   bool enPassant(int newX, int newY, Board &board) const;
    void pawnPromotion() ;
 };
 
@@ -72,7 +73,7 @@ public:
       this->xCoord = xCoord;
       this->yCoord = yCoord;
    }
-   bool move(int newX, int newY, Board* board) override;
+   bool move(int newX, int newY, Board &board) const override;
 };
 
 class Knight : public Piece
@@ -85,7 +86,7 @@ public:
       this->xCoord = xCoord;
       this->yCoord = yCoord;
    }
-   bool move(int newX, int newY, Board* board) override;
+   bool move(int newX, int newY, Board &board) const override;
 };
 
 class Bishop : public Piece
@@ -98,7 +99,7 @@ public:
       this->xCoord = xCoord;
       this->yCoord = yCoord;
    }
-   bool move(int newX, int newY, Board* board) override;
+   bool move(int newX, int newY, Board &board) const override;
 };
 
 class Queen : public Piece
@@ -111,7 +112,7 @@ public:
       this->xCoord = xCoord;
       this->yCoord = yCoord;
    }
-   bool move(int newX, int newY, Board* board) override;
+   bool move(int newX, int newY, Board &board) const override;
 };
 
 class King : public Piece
@@ -124,8 +125,8 @@ public:
       this->xCoord = xCoord;
       this->yCoord = yCoord;
    }
-   bool move(int newX, int newY, Board* board) override;
-   bool castle(int newX, int newY, Board* board) ;
+   bool move(int newX, int newY, Board &board) const override;
+   bool castle(int newX, int newY, Board &board) ;
 
 };
 
