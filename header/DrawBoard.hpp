@@ -4,5 +4,5 @@
 
 
 namespace draw_board{
-    void printBoard(const Board& board);
+    void printBoard(const Board* board);
 }   

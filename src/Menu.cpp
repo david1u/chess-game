@@ -40,7 +40,7 @@ void Menu::chessDisplay() const {
     }
 }
 
-string getMenuName() const {
+string Menu::getMenuName() const {
     return this->menuName;
 }
 

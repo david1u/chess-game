@@ -1,10 +1,6 @@
 #include "../header/Board.hpp"
 #include "../header/Piece.hpp"
 
-int main(){
-    
-}
-
 Board::Board() {
     board.resize(8); // set board to have 8 rows
 
@@ -57,18 +53,28 @@ std::vector<std::vector<Piece*>> Board::getBoard() const{
     return board;
 }
 
-Piece* Board::getPiece(int x, int y) const {
-	return board[x][y];
+Piece* Board::getPiece(int row, int col) const {
+	return board[row][col];
 }
 
 bool Board::isFree(int row, int col) const {
 	return getPiece(row, col) == nullptr;
 }
 
-void Board::updateBoard(int newX, int newY, Piece* piece){
-    board[newX][newY] = piece;
-    piece->setXCoord(newX);
-    piece->setYCoord(newY);
-    
+void Board::updateBoard(int row, int col, Piece* piece){
+    int oldX = piece->getXCoord();
+    int oldY = piece->getYCoord();
+    board[row][col] = piece;
+    board[oldY][oldX] = nullptr;
+    piece->setXCoord(col);
+    piece->setYCoord(row);
 }
 
+Board::~Board() {
+    for (int row = 0; row < 8; ++row) {
+        for (int col = 0; col < 8; ++col) {
+            delete board[row][col]; 
+            board[row][col] = nullptr; // It's a good practice to set the pointer to nullptr after deleting
+        }
+    }
+}

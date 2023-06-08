@@ -4,9 +4,9 @@
 #include "../header/Board.hpp"
 #include "../header/DrawBoard.hpp"
 
-void draw_board::printBoard(const Board& board)
+void draw_board::printBoard(const Board* board)
 {
-    const std::vector<std::vector<Piece*>>& chessBoard = board.getBoard();
+    const std::vector<std::vector<Piece*>>& chessBoard = board->getBoard();
 
     std::cout << "     A       B       C       D       E       F       G       H   \n";
     std::cout << "  ┏━━━━━━━┯━━━━━━━┯━━━━━━━┯━━━━━━━┯━━━━━━━┯━━━━━━━┯━━━━━━━┯━━━━━━━┓\n";
