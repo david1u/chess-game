@@ -9,5 +9,4 @@ void Square::setPiece(Piece* piece) {
 
 void Square::removePiece() {
     currPiece = nullptr;
-    //hi
 }
