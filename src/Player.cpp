@@ -34,22 +34,24 @@ bool Player::makeMove(Board* board) {
 
     // Check if you are moving your own piece
 
-    Piece* piece = board->getPiece(start.second, start.first); 
-    cout << "This piece is: " << piece->getName() << endl;
-    cout << "The color of this piece is: " << piece->getColor() << endl; 
-    cout << "The 'x' coord is: " << piece->getXCoord() << endl;
-    cout << "The 'y' coord is: " << piece->getYCoord() << endl;
+    // Piece* piece = board->getPiece(start.second, start.first); 
+    // cout << "This piece is: " << piece->getName() << endl;
+    // cout << "The color of this piece is: " << piece->getColor() << endl; 
+    // cout << "The 'x' coord is: " << piece->getXCoord() << endl;
+    // cout << "The 'y' coord is: " << piece->getYCoord() << endl;
 
-    if(piece == nullptr){
-        cout << "This is a nullptr" << endl;
+    // if(piece == nullptr){
+    //     cout << "This is a nullptr" << endl;
+    // }
+    if(board->getPiece(start.second, start.first) == nullptr) {
+        return false;
     }
-
     if(board->getPiece(start.second, start.first)->getColor() != this->getColor()) {
             cout << "Not a valid piece to move or no piece exists\n";
             return false;
     }
 
-    //Piece* piece = board->getPiece(start.first, start.second); 
+    Piece* piece = board->getPiece(start.second, start.first); 
 
     cout << "Enter destination position (letter number): ";
     cin >> letter >> number;
@@ -76,7 +78,7 @@ bool Player::makeMove(Board* board) {
     // Check for collision
     if(!board->isFree(dest.second, dest.first)){
         Piece* toBeRemoved = board->getPiece(dest.second, dest.first);
-        addEliminated(toBeRemoved);
+        addEliminated(toBeRemoved, board);
     }
 
     board->updateBoard(dest.second, dest.first, piece);
@@ -90,8 +92,9 @@ void Player::surrender() {
     
 }
 
-void Player::addEliminated(Piece* piece) {
+void Player::addEliminated(Piece* piece, Board* board) {
     eliminated.push_back(piece->getName());
+    board->removePiece(piece);
     delete piece;
 }
 
