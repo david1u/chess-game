@@ -1,8 +1,27 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
+cmake_minimum_required(VERSION 3.20)
 
 project(final-project)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -O0")
+
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib")
+
+
+ADD_SUBDIRECTORY(googletest)
+
+ADD_EXECUTABLE(Piece
+    header/Board.hpp
+    src/Board.cpp
+    header/Piece.hpp
+    src/Piece.cpp
+)
+ADD_EXECUTABLE(testPieces
+    src/Board.cpp 
+    src/Piece.cpp 
+    tests/testPieces.cpp
+)
 
 ADD_EXECUTABLE(chess
     src/main.cpp 
@@ -14,5 +33,6 @@ ADD_EXECUTABLE(chess
     src/Player.cpp 
 )
 
-TARGET_LINK_LIBRARIES(chess PUBLIC "${PROJECT_BINARY_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/header")
-
+target_link_libraries(Piece gmock gtest gtest_main)
+target_link_libraries(testPieces gmock gtest gtest_main)
+target_link_libraries(chess gmock gtest gtest_main)
