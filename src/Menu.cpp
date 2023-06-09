@@ -100,36 +100,50 @@ Menu* SurrenderMenu::chooseOption() {
     return nullptr;
 }
 
-ResultsMenu::ResultsMenu(Game* chess) {
-    Menu = "Results";
-    chessGame = chess;
+void ResultsMenu::menuDisplay(bool whiteWon) {
+    //open file to display what is in the Checkmate.txt file
+    string filename = "text/Checkmate.txt";
+    ifstream file(filename);
+
+    if(file.is_open()) {
+        string line;
+        while (getline(file, line)) {
+            cout << line << '\n';
+        }
+        file.close();
+    }
+    else {
+        throw runtime_error("File failed to open");
+    }
+
+    cout << "================================================\n";
+    
+    if(whiteWon) {
+        cout << "               WHITE WINS!\n";
+    }
+    else{
+        cout << "               BLACK WINS!\n";  
+    }
+
+    cout << "================================================\n";
+    displayChoices();
 }
 
 void ResultsMenu::displayChoices() {
-    //open file to display what is in the Checkmate.txt file
-    // string filename = "text/Checkmate.txt";
-    // ifstream file(filename);
-
-    // if(file.is_open()) {
-    //     string line;
-    //     while (getline(file, line)) {
-    //         cout << line << '\n';
-    //     }
-    //     file.close();
-    // }
-    // else {
-    //     throw runtime_error("File failed to open");
-    // }
-
-    // cout << "================================================\n";
-    
-    // if(chessGame->whiteWins()) {
-
-    // }
+    cout << "                 Play again? [Y] [N]";
+    cin >> this->choice;
 }
 
 Menu* ResultsMenu::chooseOption() {
-    //NEEDS IMPLEMENTATION
+    if(this->choice == "N" || this->choice == "n"){
+        quit();
+    }
+    else if(this->choice == "Y" || this->choice == "y"){
+        return nullptr;
+    }
+    else {
+        cout << "choice was not valid, returning to Start Menu." << endl;
+    }
     return nullptr;
 }
 

@@ -6,6 +6,8 @@ using namespace std;
 int main(int argv, char** argc) {
     Menu* currentMenu = nullptr;
     Menu* prevMenu = nullptr;
+    ResultsMenu* results = nullptr;
+    bool whiteWins;
     while(true) {
         currentMenu = new StartMenu();
         while(dynamic_cast<GameInitiateMenu*>(currentMenu) == nullptr && 
@@ -24,14 +26,18 @@ int main(int argv, char** argc) {
             //Use GameMenu->getPlayerOneName(), and getPlayerTwoName().
             //This is where we should initiate Game class with player names as parameters.
             Game* game = new Game(GameMenu->getPlayerOneName(), GameMenu->getPlayerTwoName());
-            game->run();
-
+            whiteWins = game->run();
+            results = new ResultsMenu();
+            results->menuDisplay(whiteWins);
+            results->chooseOption(); //this is only returning nullptr or quitting
+            delete results;
         }
         else if (dynamic_cast<LoadMenu*>(currentMenu) != nullptr) {
             //currentMenu is LoadMenu
         }
-        
-        delete currentMenu;
+        if(currentMenu != nullptr){
+            delete currentMenu;
+        }
         //this will restart at StartMenu. Players have to quit using the [Q] option.
     }
 
