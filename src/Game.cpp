@@ -100,7 +100,7 @@ Game::~Game() {
 
 bool Game::inCheck(King* king, vector<Piece*> enemyPieces) {
     for(Piece* piece : enemyPieces) {
-        if(piece->move(king->getYCoord(), king->getXCoord(), board)) {
+        if(piece->move(king->getXCoord(), king->getYCoord(), board)) {
             return true;
         }
     }
