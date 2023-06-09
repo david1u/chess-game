@@ -42,15 +42,12 @@ string Menu::getMenuName() const {
 
 void MainMenu::displayChoices() {
     cout << "        [2] Two Player" << endl;
-    cout << "        [L]oad Game" << endl;
     cout << "        [Q]uit" << endl;
 }
 
 Menu* MainMenu::chooseOption() {
     if (this->choice == "2") {
         return new GameInitiateMenu();
-    } else if (this->choice == "l" || this->choice == "L") {
-        // Load game option
     } else if (this->choice == "q" || this->choice == "Q") {
         quit();
         return nullptr;
@@ -166,14 +163,5 @@ string GameInitiateMenu::getPlayerTwoName() const {
 
 Menu* GameInitiateMenu::chooseOption() {
   // NEEDS IMPLEMENTATION
-    return nullptr;
-}
-
-void LoadMenu::displayChoices() {
-    // NEEDS IMPLEMENTATION
-}
-
-Menu* LoadMenu::chooseOption() {
-    // NEEDS IMPLEMENTATION
     return nullptr;
 }

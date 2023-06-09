@@ -10,8 +10,7 @@ int main(int argc, char** argv) {
     bool whiteWins;
     while(true) {
         currentMenu = new StartMenu();
-        while (dynamic_cast<GameInitiateMenu*>(currentMenu) == nullptr && 
-               dynamic_cast<LoadMenu*>(currentMenu) == nullptr) {
+        while (dynamic_cast<GameInitiateMenu*>(currentMenu) == nullptr) {
             currentMenu->menuDisplay();
             Menu* nextMenu = currentMenu->chooseOption();
             if (nextMenu == nullptr) {
@@ -36,9 +35,6 @@ int main(int argc, char** argv) {
             results->chooseOption(); //this is only returning nullptr or quitting
             delete results;
             delete game;
-        }
-        else if (dynamic_cast<LoadMenu*>(currentMenu) != nullptr) {
-            //currentMenu is LoadMenu
         }
         if(currentMenu != nullptr){
             delete currentMenu;
