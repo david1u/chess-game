@@ -38,6 +38,15 @@ bool Pawn::move(int newCol, int newRow, Board *board) {
     // Pawns can only move forward one square, unless it's their first move
     // if(abs(dy) > 1 || abs(dx) > 1)
     //     return false;
+    if(abs(drow) == 2 && abs(dcol) > 0) {
+        return false;
+    }
+
+    if(abs(drow) < 1 && abs(dcol) > 0) {
+        return false;
+    }
+
+    
     if(abs(drow) == 2 && moveCount != 0) {
         return false;
     }
