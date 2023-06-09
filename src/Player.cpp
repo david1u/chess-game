@@ -53,6 +53,11 @@ bool Player::makeMove(Board* board) {
 
     Piece* piece = board->getPiece(start.second, start.first); 
 
+    std::vector<std::pair<int, int>> possibleMoves = piece->getPossibleMoves(board);
+    for (const auto& move : possibleMoves) {
+        std::cout << "(" << move.first << ", " << move.second << ")" << std::endl;
+    }
+
     cout << "Enter destination position (letter number): ";
     cin >> letter >> number;
     
