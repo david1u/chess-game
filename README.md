@@ -112,11 +112,11 @@
  > * Make sure your README file and Project board are up-to-date reflecting the current status of your project (e.g. any changes that you have made during the project such as changes to your class diagram). Previous versions should still be visible through your commit history. 
  
  ## Screenshots
- > Screenshots of the input/output after running your application
- > <img width="315" alt="image" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/fbaac98f-2fec-4325-8267-4e160c2e77cc">
- > <img width="302" alt="image" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/6da71f8d-cc20-42ff-862c-9c21c12f335b">
-<img width="498" alt="image" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/47431e24-ee13-4314-a924-0f2838eb6af5">
-<img width="502" alt="image" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/0696749e-8f41-493d-a2ee-2d8bb71ef519">
+ > Screenshots of the input/output after running your application. 
+ > <img width="315" alt="image" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/fbaac98f-2fec-4325-8267-4e160c2e77cc">. 
+ > <img width="302" alt="image" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/6da71f8d-cc20-42ff-862c-9c21c12f335b">. 
+<img width="498" alt="image" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/47431e24-ee13-4314-a924-0f2838eb6af5">. 
+<img width="502" alt="image" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/0696749e-8f41-493d-a2ee-2d8bb71ef519">. 
 
 
  ## Installation/Usage
@@ -124,7 +124,7 @@
  ## Testing
  > For our project, we used the google testing and mocking framework to validate/test our code. We wrote unit tests for the menu class, player class, and piece class. We also used valgrind to check for memory errors and leaks. Here is an example of our unit tests and a screenshot of the test executable results:  
  
-<img width="656" alt="image" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/b8621945-efbc-4e50-8659-9bbfd113568a">
-![image](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/5912814b-f325-4621-979c-9baa51b4be03)
+<img width="656" alt="image" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/b8621945-efbc-4e50-8659-9bbfd113568a">. 
+![image](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/aee6ec2c-a173-4ed2-918a-1b7614519f06)
 
-<img width="656" alt="image" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/b8621945-efbc-4e50-8659-9bbfd113568a">
+
