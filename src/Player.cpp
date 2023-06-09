@@ -54,6 +54,7 @@ bool Player::makeMove(Board* board) {
     Piece* piece = board->getPiece(start.second, start.first); 
 
     std::vector<std::pair<int, int>> possibleMoves = piece->getPossibleMoves(board);
+    // first in pair is col, second is row
     for (const auto& move : possibleMoves) {
         std::cout << "(" << move.first << ", " << move.second << ")" << std::endl;
     }
@@ -101,6 +102,7 @@ void Player::addEliminated(Piece* piece, Board* board) {
     eliminated.push_back(piece->getName());
     board->removePiece(piece);
     delete piece;
+    piece = nullptr;
 }
 
 void Player::showEliminated() const{
