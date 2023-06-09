@@ -1,6 +1,7 @@
 #ifndef MENU_HPP
 #define MENU_HPP
 #include <string>
+#include "Game.hpp"
 using namespace std;
 
 class Menu {
@@ -47,9 +48,11 @@ class SurrenderMenu : public Menu {
 
 class ResultsMenu : public Menu {
  private:
+   Game* chessGame;
    void displayChoices() override;
  public:
-   ResultsMenu() : Menu("Results") {}
+   ResultsMenu() : : Menu("Results") {}
+   ResultsMenu(Game*); 
    Menu* chooseOption() override;
 };  
 

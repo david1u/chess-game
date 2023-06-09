@@ -100,8 +100,30 @@ Menu* SurrenderMenu::chooseOption() {
     return nullptr;
 }
 
+ResultsMenu::ResultsMenu(Game* chess) {
+    Menu = "Results";
+    chessGame = chess;
+}
+
 void ResultsMenu::displayChoices() {
-    //NEEDS IMPLEMENTATION
+    //open file to display what is in the Checkmate.txt file
+    string filename = "text/Checkmate.txt";
+    ifstream file(filename);
+
+    if(file.is_open()) {
+        string line;
+        while (getline(file, line)) {
+            cout << line << '\n';
+        }
+        file.close();
+    }
+    else {
+        throw runtime_error("File failed to open");
+    }
+
+    cout << "================================================\n";
+    
+    if(chessGame->whiteWins())
 }
 
 Menu* ResultsMenu::chooseOption() {
@@ -137,7 +159,7 @@ string GameInitiateMenu::getPlayerTwoName() const {
 }
 
 Menu* GameInitiateMenu::chooseOption() {
-    //NEEDS IMPLEMENTATION
+    //Does not get called during game implementation.
     return nullptr;
 }
 
