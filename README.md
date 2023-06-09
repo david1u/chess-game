@@ -17,8 +17,7 @@
 
 
 
-![Untitled Workspace](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/86d7ddd3-39d0-41ae-8424-cf8c7667726f)
-
+![Untitled Workspace (1)](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/bf0c326a-8d57-4046-8e01-f5299a7486dc)
 
 
 ### Screen Layouts
