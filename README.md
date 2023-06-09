@@ -113,8 +113,18 @@
  
  ## Screenshots
  > Screenshots of the input/output after running your application
+ > <img width="315" alt="image" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/fbaac98f-2fec-4325-8267-4e160c2e77cc">
+ > <img width="302" alt="image" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/6da71f8d-cc20-42ff-862c-9c21c12f335b">
+<img width="498" alt="image" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/47431e24-ee13-4314-a924-0f2838eb6af5">
+<img width="502" alt="image" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/0696749e-8f41-493d-a2ee-2d8bb71ef519">
+
+
  ## Installation/Usage
- > Instructions on installing and running your application
+ > To install and run our chess game, use the git clone command to clone our repository onto your local machine. (git clone  https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013.git) Once the repo is cloned, change directories to the chess game directory using cd final-project-mchun078-mibra033-dlu046-akoth013.git. Then use cmake . followed by make to create our executables. Lastly, run bin/chess to begin playing!
  ## Testing
- > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
+ > For our project, we used the google testing and mocking framework to validate/test our code. We wrote unit tests for the menu class, player class, and piece class. We also used valgrind to check for memory errors and leaks. Here is an example of our unit tests and a screenshot of the test executable results:  
  
+<img width="656" alt="image" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/b8621945-efbc-4e50-8659-9bbfd113568a">
+![image](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/5912814b-f325-4621-979c-9baa51b4be03)
+
+<img width="656" alt="image" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/b8621945-efbc-4e50-8659-9bbfd113568a">
