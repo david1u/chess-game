@@ -4,20 +4,25 @@
 #include "Game.hpp"
 using namespace std;
 
+class Game;
+
 class Menu {
  protected:
     string menuName;
     string choice = "";
+   bool shouldQuit;
 
     virtual void displayChoices() = 0;
-    void quit() const;
     void chessDisplay() const;
 
  public:
-    Menu(string name) : menuName(name) {}
+    Menu(string name) : menuName(name), shouldQuit(false) {}
     ~Menu();
     string getMenuName() const;
-
+   void quit() {shouldQuit = true;}
+       bool getShouldQuit() const {
+        return shouldQuit;
+    }
     virtual void menuDisplay();
     virtual Menu* chooseOption() = 0;
 };

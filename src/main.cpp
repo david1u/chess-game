@@ -3,19 +3,23 @@
 using namespace std;
 #include <iostream>
 
-int main(int argv, char** argc) {
+int main(int argc, char** argv) {
     Menu* currentMenu = nullptr;
     Menu* prevMenu = nullptr;
     ResultsMenu* results = nullptr;
     bool whiteWins;
     while(true) {
         currentMenu = new StartMenu();
-        while(dynamic_cast<GameInitiateMenu*>(currentMenu) == nullptr && 
-        dynamic_cast<LoadMenu*>(currentMenu) == nullptr) {
-            prevMenu = currentMenu;
+        while (dynamic_cast<GameInitiateMenu*>(currentMenu) == nullptr && 
+               dynamic_cast<LoadMenu*>(currentMenu) == nullptr) {
             currentMenu->menuDisplay();
-            currentMenu = currentMenu->chooseOption();
-            delete prevMenu;
+            Menu* nextMenu = currentMenu->chooseOption();
+            if (nextMenu == nullptr) {
+                // Quit option was selected, break out of the loop
+                break;
+            }
+            delete currentMenu;
+            currentMenu = nextMenu;
         }
 
         if(dynamic_cast<GameInitiateMenu*>(currentMenu) != nullptr) {

@@ -7,6 +7,8 @@
 #include "Player.hpp"
 #include "Menu.hpp"
 
+class Menu;
+
 class Game {
 private:
     Board* board;
@@ -23,12 +25,12 @@ public:
     Board* getBoard() const;
     Player* getPlayerOne() const;
     Player* getPlayerTwo() const;
-    void run();
+    bool run();
     void updatePieceVectors();
-    bool inCheck(Piece* king, vector<Piece*> enemyPieces);
-    bool canEscapeCheck(Piece* king, vector<Piece*> enemyPieces);
-    bool checkCanBeBlocked(Piece* king, vector<Piece*> myPieces, vector<Piece*> enemyPieces);
-    bool isCheckmate(Piece* king, vector<Piece*> myPieces, vector<Piece*> enemyPieces);
+    bool inCheck(Piece* king, std::vector<Piece*> enemyPieces);
+    bool canEscapeCheck(Piece* king, std::vector<Piece*> enemyPieces);
+    bool checkCanBeBlocked(Piece* king, std::vector<Piece*> myPieces, std::vector<Piece*> enemyPieces);
+    bool isCheckmate(Piece* king, std::vector<Piece*> myPieces, std::vector<Piece*> enemyPieces);
 
 };
 
