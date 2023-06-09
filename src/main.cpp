@@ -3,36 +3,42 @@
 using namespace std;
 #include <iostream>
 
-int main(int argv, char** argc) {
+int main(int argc, char** argv) {
     Menu* currentMenu = nullptr;
-    Menu* prevMenu = nullptr;
-    while(true) {
+    while (true) {
         currentMenu = new StartMenu();
-        while(dynamic_cast<GameInitiateMenu*>(currentMenu) == nullptr && 
-        dynamic_cast<LoadMenu*>(currentMenu) == nullptr) {
-            prevMenu = currentMenu;
+        while (dynamic_cast<GameInitiateMenu*>(currentMenu) == nullptr && 
+               dynamic_cast<LoadMenu*>(currentMenu) == nullptr) {
             currentMenu->menuDisplay();
-            currentMenu = currentMenu->chooseOption();
-            delete prevMenu;
+            Menu* nextMenu = currentMenu->chooseOption();
+            if (nextMenu == nullptr) {
+                // Quit option was selected, break out of the loop
+                break;
+            }
+            delete currentMenu;
+            currentMenu = nextMenu;
         }
 
-        if(dynamic_cast<GameInitiateMenu*>(currentMenu) != nullptr) {
-            //currentMenu is GameInitiateMenu
-            GameInitiateMenu* GameMenu = dynamic_cast<GameInitiateMenu*>(currentMenu);
-            GameMenu->menuDisplay();
-            //GameMenu p1, and p2 are populated with the player names.
-            //Use GameMenu->getPlayerOneName(), and getPlayerTwoName().
-            //This is where we should initiate Game class with player names as parameters.
-            Game* game = new Game(GameMenu->getPlayerOneName(), GameMenu->getPlayerTwoName());
+        if (currentMenu == nullptr || currentMenu->getShouldQuit()) {
+            // Quit option was selected, break out of the outer loop
+            delete currentMenu;
+            break;
+        }
+
+        if (dynamic_cast<GameInitiateMenu*>(currentMenu) != nullptr) {
+            // currentMenu is GameInitiateMenu
+            GameInitiateMenu* gameMenu = dynamic_cast<GameInitiateMenu*>(currentMenu);
+            gameMenu->menuDisplay();
+            // GameMenu p1 and p2 are populated with the player names.
+            // Use gameMenu->getPlayerOneName() and getPlayerTwoName().
+            // This is where we should initiate the Game class with player names as parameters.
+            Game* game = new Game(gameMenu->getPlayerOneName(), gameMenu->getPlayerTwoName());
             game->run();
+            delete game;
+        }
 
-        }
-        else if (dynamic_cast<LoadMenu*>(currentMenu) != nullptr) {
-            //currentMenu is LoadMenu
-        }
-        
         delete currentMenu;
-        //this will restart at StartMenu. Players have to quit using the [Q] option.
+        // This will restart at StartMenu. Players have to quit using the [Q] option.
     }
 
     return 0;
