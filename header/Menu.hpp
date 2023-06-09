@@ -53,14 +53,11 @@ class SurrenderMenu : public Menu {
 
 class ResultsMenu : public Menu {
  private:
-   Game* chessGame;
    void displayChoices() override;
  public:
    ResultsMenu() : Menu("Results") {}
-   ResultsMenu(Game* game) : Menu("Results") {
-      chessGame = game;
-   }
    Menu* chooseOption() override;
+   void menuDisplay(bool whiteWon);
 };  
 
 class GameInitiateMenu : public Menu {
