@@ -41,13 +41,6 @@
 
 > This layout is a mock-up of the chessboard in the context of a match between two players. 
 
-<!-- <img width="228" alt="Screen Shot 2023-05-25 at 11 41 33 PM" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/00826bfa-7222-40df-a365-39a05ae613a9">   -->
-![image](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/5dc10259-90e0-4585-abb4-f03da5173338)
-
-
-> This layout is for if a player wishes to surrender in the middle of a match.  
-> 
-
 <!-- <img width="234" alt="Screen Shot 2023-05-26 at 1 35 33 AM" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/1a32deec-bd7c-4010-a284-ba6e626294b1">   -->
 <img width="767" alt="image" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/cb966a27-de6b-4972-bde8-de1165fd824d">
 
@@ -69,9 +62,6 @@
 
 > **Game Initiate Menu**  
 > This menu right before the chess game begins. This menu prompts the user to input two player names for white and black.  
-
-> **Surrender Menu**  
-> This menu is shown to confirm if a player would like to forfeit a match.  
 
 > **Results Menu**  
 > This menu prints out the winner of the chess match and shows the pieces captured by both sides.  
@@ -100,34 +90,6 @@
 > **UPDATES 2.0**  
 > In this new class diagram, we scrapped the square class since we decided it violated the dependency inversion principle. We believed it was a violation because it was making the piece class (low level module) rely on the square class (low level module) instead of an abstract. We also made the menu class an abstract class, with various different menus as subclasses, to help enforce the open-close principle. Now we can add menus by creating new classes instead of editing the menu class itself. Lastly, the drawBoard class was created to enforce the single responsibility principle. Now we do not have a board class that is storing data while also outputting to terminal.
  
- > ## Phase III
- > You will need to schedule a check-in for the second scrum meeting with the same reader you had your first scrum meeting with (using Calendly). Your entire team must be present. This meeting will occur on week 8 during lab time.
- 
- > BEFORE the meeting you should do the following:
- > * Update your class diagram from Phase II to include any feedback you received from your TA/grader.
- > * Considering the SOLID design principles, reflect back on your class diagram and think about how you can use the SOLID principles to improve your design. You should then update the README.md file by adding the following:
- >   * A new class diagram incorporating your changes after considering the SOLID principles.
- >   * For each update in your class diagram, you must explain in 3-4 sentences:
- >     * What SOLID principle(s) did you apply?
- >     * How did you apply it? i.e. describe the change.
- >     * How did this change help you write better code?
- > * Perform a new sprint plan like you did in Phase II.
- > * You should also make sure that your README file (and Project board) are up-to-date reflecting the current status of your project and the most recent class diagram. Previous versions of the README file should still be visible through your commit history.
- 
-> During the meeting with your reader you will discuss: 
- > * How effective your last sprint was (each member should talk about what they did)
- > * Any tasks that did not get completed last sprint, and how you took them into consideration for this sprint
- > * Any bugs you've identified and created issues for during the sprint. Do you plan on fixing them in the next sprint or are they lower priority?
- > * What tasks you are planning for this next sprint.
-
- 
- > ## Final deliverable
- > All group members will give a demo to the reader during lab time. ou should schedule your demo on Calendly with the same reader who took your second scrum meeting. The reader will check the demo and the project GitHub repository and ask a few questions to all the team members. 
- > Before the demo, you should do the following:
- > * Complete the sections below (i.e. Screenshots, Installation/Usage, Testing)
- > * Plan one more sprint (that you will not necessarily complete before the end of the quarter). Your In-progress and In-testing columns should be empty (you are not doing more work currently) but your TODO column should have a full sprint plan in it as you have done before. This should include any known bugs (there should be some) or new features you would like to add. These should appear as issues/cards on your Project board.
- > * Make sure your README file and Project board are up-to-date reflecting the current status of your project (e.g. any changes that you have made during the project such as changes to your class diagram). Previous versions should still be visible through your commit history. 
- 
  ## Screenshots
  > <img width="315" alt="image" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/fbaac98f-2fec-4325-8267-4e160c2e77cc">  
  > <img width="302" alt="image" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/6da71f8d-cc20-42ff-862c-9c21c12f335b">  
@@ -136,7 +98,22 @@
 
 
  ## Installation/Usage
- > To install and run our chess game, use the git clone command to clone our repository onto your local machine. (git clone  https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013.git) Once the repo is cloned, change directories to the chess game directory using cd final-project-mchun078-mibra033-dlu046-akoth013.git. Then use cmake . followed by make to create our executables. Lastly, run bin/chess to begin playing!
+ > To install the game you must first clone the repository recursively
+ > git clone https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013.git --recursive
+ > 
+ > Make sure to navigate to the final project folder before running the following commands
+ > Afterwards, you can run cmake .
+ > 
+ > ```cmake .```
+ > 
+ > Then run the make command
+ > 
+ > ```make```
+ > 
+ > The programs are now compiled in the bin folder, to run the chess program to play the game
+ > 
+ > ```bin/chess```
+ > 
  ## Testing
  > For our project, we used the google testing and mocking framework to validate/test our code. We wrote unit tests for the menu class, player class, and piece class. We also used valgrind to check for memory errors and leaks. Here is an example of our unit tests and a screenshot of the test executable results:  
  
