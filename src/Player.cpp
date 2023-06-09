@@ -20,7 +20,14 @@ int Player::makeMove(Board* board) {
     char letter;
     int number;
     pair<int, int> start, dest;
-    cout << "The player is white: " << getColor() << endl;
+    cout << "Player turn ";
+    if(getColor()) {
+        cout << "white, " << this->name << endl;
+    }
+    else {
+        cout << "black, " << this->name << endl;
+    }
+    
     cout << "Enter starting position (letter number): ";
     getline(cin, input);
 
