@@ -102,7 +102,7 @@ bool Pawn::move(int newCol, int newRow, Board *board) {
         
 
     // If all checks passed, the move is valid
-    std::cout << "Valid move found" << std::endl;
+    // std::cout << "Valid move found" << std::endl;
     return true;
 }
 
