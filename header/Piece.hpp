@@ -85,7 +85,7 @@ public:
       this->xCoord = xCoord;
       this->yCoord = yCoord;
    }
-   bool move(int newX, int newY, Board &board) const override;
+   bool move(int newX, int newY, Board* board) override;
 };
 
 class Bishop : public Piece
