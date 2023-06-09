@@ -1,16 +1,17 @@
 #include "../header/Menu.hpp"
 #include "../header/Game.hpp"
+#include <fstream>
 using namespace std;
 #include <iostream>
 
+void printResultsMenu(bool);
+
 int main(int argc, char** argv) {
     Menu* currentMenu = nullptr;
-    Menu* prevMenu = nullptr;
-    ResultsMenu* results = nullptr;
-    bool whiteWins;
-    while(true) {
+    while (true) {
         currentMenu = new StartMenu();
-        while (dynamic_cast<GameInitiateMenu*>(currentMenu) == nullptr) {
+        while (dynamic_cast<GameInitiateMenu*>(currentMenu) == nullptr && 
+               dynamic_cast<LoadMenu*>(currentMenu) == nullptr) {
             currentMenu->menuDisplay();
             Menu* nextMenu = currentMenu->chooseOption();
             if (nextMenu == nullptr) {
@@ -21,26 +22,56 @@ int main(int argc, char** argv) {
             currentMenu = nextMenu;
         }
 
-        if(dynamic_cast<GameInitiateMenu*>(currentMenu) != nullptr) {
-            //currentMenu is GameInitiateMenu
-            GameInitiateMenu* GameMenu = dynamic_cast<GameInitiateMenu*>(currentMenu);
-            GameMenu->menuDisplay();
-            //GameMenu p1, and p2 are populated with the player names.
-            //Use GameMenu->getPlayerOneName(), and getPlayerTwoName().
-            //This is where we should initiate Game class with player names as parameters.
-            Game* game = new Game(GameMenu->getPlayerOneName(), GameMenu->getPlayerTwoName());
-            whiteWins = game->run();
-            results = new ResultsMenu();
-            results->menuDisplay(whiteWins);
-            results->chooseOption(); //this is only returning nullptr or quitting
-            delete results;
+        if (currentMenu == nullptr || currentMenu->getShouldQuit()) {
+            // Quit option was selected, break out of the outer loop
+            delete currentMenu;
+            break;
+        }
+
+        if (dynamic_cast<GameInitiateMenu*>(currentMenu) != nullptr) {
+            // currentMenu is GameInitiateMenu
+            GameInitiateMenu* gameMenu = dynamic_cast<GameInitiateMenu*>(currentMenu);
+            gameMenu->menuDisplay();
+            // GameMenu p1 and p2 are populated with the player names.
+            // Use gameMenu->getPlayerOneName() and getPlayerTwoName().
+            // This is where we should initiate the Game class with player names as parameters.
+            Game* game = new Game(gameMenu->getPlayerOneName(), gameMenu->getPlayerTwoName());
+            bool whiteWon = game->run();
+            printResultsMenu(whiteWon);
             delete game;
         }
-        if(currentMenu != nullptr){
-            delete currentMenu;
-        }
-        //this will restart at StartMenu. Players have to quit using the [Q] option.
+
+        delete currentMenu;
+        // This will restart at StartMenu. Players have to quit using the [Q] option.
     }
 
     return 0;
 }
+
+void printResultsMenu(bool whiteWon){
+    //open file to display what is in the Checkmate.txt file
+    string filename = "text/Checkmate.txt";
+    ifstream file(filename);
+
+    if(file.is_open()) {
+        string line;
+        while (getline(file, line)) {
+            cout << line << '\n';
+        }
+        file.close();
+    }
+    else {
+        throw runtime_error("File failed to open");
+    }
+
+    cout << "================================================\n";
+    
+    if(whiteWon) {
+        cout << "               WHITE WINS!\n";
+    }
+    else{
+        cout << "               BLACK WINS!\n";  
+    }
+
+    cout << "================================================\n";
+} 

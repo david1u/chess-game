@@ -1,39 +1,35 @@
 #ifndef MENU_HPP
 #define MENU_HPP
 #include <string>
-#include "Game.hpp"
 using namespace std;
-
-class Game;
 
 class Menu {
  protected:
-   string menuName;
-   string choice = "";
-   //bool shouldQuit;
+    string menuName;
+    string choice = "";
+   bool shouldQuit;
 
-   virtual void displayChoices() = 0;
-   void chessDisplay() const;
+    virtual void displayChoices() = 0;
+    void chessDisplay() const;
 
  public:
-   Menu(string name) : menuName(name) {}
-   ~Menu();
-   string getMenuName() const;
-   void quit() {
-      delete this;
-      std::exit(0);
-   }
-   
-   virtual void menuDisplay();
-   virtual Menu* chooseOption() = 0;
+    Menu(string name) : menuName(name), shouldQuit(false) {}
+    ~Menu();
+    string getMenuName() const;
+   void quit() {shouldQuit = true;}
+       bool getShouldQuit() const {
+        return shouldQuit;
+    }
+    virtual void menuDisplay();
+    virtual Menu* chooseOption() = 0;
 };
 
 class MainMenu : public Menu {
  private:
-   void displayChoices() override;
+    void displayChoices() override;
  public:
-   MainMenu() : Menu("Main Menu") {}
-   Menu* chooseOption() override;
+    MainMenu() : Menu("Main Menu") {}
+    Menu* chooseOption() override;
 };
 
 class StartMenu : public Menu {
@@ -58,7 +54,6 @@ class ResultsMenu : public Menu {
  public:
    ResultsMenu() : Menu("Results") {}
    Menu* chooseOption() override;
-   void menuDisplay(bool whiteWon);
 };  
 
 class GameInitiateMenu : public Menu {
@@ -72,5 +67,13 @@ class GameInitiateMenu : public Menu {
    void menuDisplay() override;
    Menu* chooseOption() override;
 };
+
+class LoadMenu : public Menu {
+ private:
+   void displayChoices() override;
+ public:
+   LoadMenu() : Menu("Results") {}
+   Menu* chooseOption() override;
+};  
 
 #endif
