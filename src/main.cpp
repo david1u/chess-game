@@ -35,6 +35,7 @@ int main(int argc, char** argv) {
             results->menuDisplay(whiteWins);
             results->chooseOption(); //this is only returning nullptr or quitting
             delete results;
+            delete game;
         }
         else if (dynamic_cast<LoadMenu*>(currentMenu) != nullptr) {
             //currentMenu is LoadMenu
