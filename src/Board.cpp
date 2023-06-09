@@ -47,6 +47,7 @@ Board::Board() {
     for (int row = 2; row < 6; row++) {
         board[row].resize(8, nullptr); // Resize each row to have 8 columns and initialize with nullptr
     }
+
 }
 
 std::vector<std::vector<Piece*>> Board::getBoard() const{
@@ -83,11 +84,21 @@ void Board::addPiece(Piece* piece) {
     board[row][col] = piece;
 }
 
+// void Board::eliminatePiece(Piece* piece) {
+//     int col = piece->getXCoord();
+//     int row = piece->getYCoord();
+//     eliminatedPieces.push_back(piece);
+//     board[row][col] = nullptr;
+// }
+
 Board::~Board() {
     for (int row = 0; row < 8; ++row) {
         for (int col = 0; col < 8; ++col) {
-            delete board[row][col]; 
-            board[row][col] = nullptr; // It's a good practice to set the pointer to nullptr after deleting
+            if (board[row][col] != nullptr) {
+                std::cout << "Deleting piece: " << board[row][col]->getName() << std::endl;
+                delete board[row][col]; 
+                board[row][col] = nullptr; // It's a good practice to set the pointer to nullptr after deleting
+            }
         }
     }
 }

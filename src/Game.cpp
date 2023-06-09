@@ -70,6 +70,7 @@ void Game::run() {
             break;
         }
     }
+    draw_board::printBoard(board);
 }
 
 Game::~Game() {
@@ -86,24 +87,34 @@ bool Game::inCheck(Piece* king, vector<Piece*> enemyPieces) {
     std::cout << "The king is located at column: " << king->getXCoord() << " and row: " << king->getYCoord() << std::endl;
     for(Piece* piece : enemyPieces) {
         if(piece->move(king->getXCoord(), king->getYCoord(), board)) {
+            std::cout << king->getColor() << " king in check" << endl;
             return true;
         }
     }
+    std::cout << king->getColor() << " king is not in check" << endl;
     return false;
 }
 
 bool Game::canEscapeCheck(Piece* king, vector<Piece*> enemyPieces) {
     int col = king->getXCoord();
     int row = king->getYCoord();
+    Piece* toBeTempRemoved = nullptr;
     for(const auto& pair: king->getPossibleMoves(board)){
-        Piece* toBeTempRemoved = nullptr;
+        toBeTempRemoved = nullptr;
         if(!board->isFree(pair.second, pair.first)) {
             toBeTempRemoved = board->getPiece(pair.second, pair.first);
             board->removePiece(toBeTempRemoved);
         }
         board->updateBoard(pair.second, pair.first, king);
         updatePieceVectors();
+
         if(!inCheck(king, enemyPieces)){
+            board->updateBoard(row, col, king);
+            if(toBeTempRemoved) {
+                board->addPiece(toBeTempRemoved);
+            }
+            updatePieceVectors();
+            //std::cout << king->getColor() << " king can escape check" << endl;
             return true;
         }
         board->updateBoard(row, col, king);
@@ -112,6 +123,7 @@ bool Game::canEscapeCheck(Piece* king, vector<Piece*> enemyPieces) {
         }
         updatePieceVectors();
     }
+    //std::cout << king->getColor() << " king can not escape check" << endl;
     return false;
 }
 
@@ -119,29 +131,37 @@ bool Game::checkCanBeBlocked(Piece* king, vector<Piece*> myPieces, vector<Piece*
     for (Piece* piece : myPieces) {
         int col = piece->getXCoord();
         int row = piece->getYCoord();
+        Piece* toBeTempRemoved = nullptr;
         for (const auto& pair : piece->getPossibleMoves(board)) {
-            Piece* toBeTempRemoved = nullptr;
+            toBeTempRemoved = nullptr;
+            // if it's a take, simulate the take
             if(!board->isFree(pair.second, pair.first)) {
                 toBeTempRemoved = board->getPiece(pair.second, pair.first);
                 board->removePiece(toBeTempRemoved);
             }
+            //move the piece to that location
             board->updateBoard(pair.second, pair.first, piece);
             updatePieceVectors();
+            //draw_board::printBoard(board);
             if (!inCheck(king, enemyPieces)) {
                 board->updateBoard(row, col, piece);
                 if(toBeTempRemoved) {
+                    //std::cout << "trying to add " << toBeTempRemoved->getName() << " back" << endl;
                     board->addPiece(toBeTempRemoved);
                 }
                 updatePieceVectors();
+                //std::cout << king->getColor() << " king check can be blocked" << endl;
                 return true;
             }
+            board->updateBoard(row, col, piece);
             if(toBeTempRemoved) {
+                //std::cout << "trying to add " << toBeTempRemoved->getName() << " back" << endl;
                 board->addPiece(toBeTempRemoved);
             }
-            board->updateBoard(row, col, piece);
             updatePieceVectors();
         }
     }
+    //std::cout << king->getColor() << " king check can no be blocked" << endl;
     return false;
 }
 
