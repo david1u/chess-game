@@ -71,6 +71,7 @@ public:
       white = isWhite;
       this->xCoord = xCoord;
       this->yCoord = yCoord;
+      moveCount = 0;
    }
    bool move(int newX, int newY, Board* board)  override;
 };
@@ -84,6 +85,7 @@ public:
       white = isWhite;
       this->xCoord = xCoord;
       this->yCoord = yCoord;
+      moveCount = 0;
    }
    bool move(int newX, int newY, Board* board) override;
 };
@@ -97,6 +99,7 @@ public:
       white = isWhite;
       this->xCoord = xCoord;
       this->yCoord = yCoord;
+      moveCount = 0;
    }
    bool move(int newX, int newY, Board* board) override;
 };
@@ -110,6 +113,7 @@ public:
       white = isWhite;
       this->xCoord = xCoord;
       this->yCoord = yCoord;
+      moveCount = 0;
    }
    bool move(int newX, int newY, Board* board)  override;
 };
@@ -123,6 +127,7 @@ public:
       white = isWhite;
       this->xCoord = xCoord;
       this->yCoord = yCoord;
+      moveCount = 0;
    }
    bool move(int newX, int newY, Board* board)  override;
    bool castle(int newX, int newY, Board* board) ;
