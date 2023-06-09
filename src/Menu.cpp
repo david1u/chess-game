@@ -5,12 +5,9 @@
 #include <iostream>
 using namespace std;
 
-void Menu::quit() const {
-    exit(0);
-}
 
 Menu::~Menu() {
-    //NEEDS IMPLEMENTATION
+    // No explicit deallocation needed for stack-based objects
 }
 
 void Menu::menuDisplay() {
@@ -24,18 +21,17 @@ void Menu::menuDisplay() {
 }
 
 void Menu::chessDisplay() const {
-    //open file to display what is in the ChessText.txt file
+    // Open file to display what is in the ChessText.txt file
     string filename = "text/ChessText.txt";
     ifstream file(filename);
 
-    if(file.is_open()) {
+    if (file.is_open()) {
         string line;
         while (getline(file, line)) {
             cout << line << '\n';
         }
         file.close();
-    }
-    else {
+    } else {
         throw runtime_error("File failed to open");
     }
 }
@@ -51,22 +47,19 @@ void MainMenu::displayChoices() {
 }
 
 Menu* MainMenu::chooseOption() {
-    Menu* newMenu = nullptr;
-    if(this->choice == "2"){
+    if (this->choice == "2") {
         return new GameInitiateMenu();
-    }
-    else if(this->choice == "l" || this->choice == "L"){
-        //load game option
-    }
-    else if(this->choice == "q" || this->choice == "Q"){
+    } else if (this->choice == "l" || this->choice == "L") {
+        // Load game option
+    } else if (this->choice == "q" || this->choice == "Q") {
         quit();
+        return nullptr;
+    } else {
+        // Choice was not taken in correctly.
+        cout << "Choice was not valid, please choose again." << endl;
+        return new MainMenu();
     }
-    else {
-        //choice was not taken in correctly.
-        cout << "choice was not valid, please choose again." << endl;
-        newMenu = new MainMenu();
-    }
-    return newMenu;
+    return nullptr;
 }
 
 void StartMenu::displayChoices() {
@@ -75,19 +68,16 @@ void StartMenu::displayChoices() {
 }
 
 Menu* StartMenu::chooseOption() {
-    Menu* newMenu = nullptr;
-    if(this->choice == "p" || this->choice == "P"){
-        newMenu = new MainMenu();
-    }
-    else if(this->choice == "q" || this->choice == "Q"){
+    if (this->choice == "p" || this->choice == "P") {
+        return new MainMenu();
+    } else if (this->choice == "q" || this->choice == "Q") {
         quit();
+        return nullptr;
+    } else {
+        // Choice was not taken in correctly.
+        cout << "Choice was not valid, please choose again." << endl;
+        return new StartMenu();
     }
-    else {
-        //choice was not taken in correctly.
-        cout << "choice was not valid, please choose again." << endl;
-        newMenu = new StartMenu();
-    }
-    return newMenu;
 }
 
 void SurrenderMenu::displayChoices() {
@@ -96,16 +86,16 @@ void SurrenderMenu::displayChoices() {
 }
 
 Menu* SurrenderMenu::chooseOption() {
-    //NEEDS IMPLEMENTATION
+    // NEEDS IMPLEMENTATION
     return nullptr;
 }
 
 void ResultsMenu::displayChoices() {
-    //NEEDS IMPLEMENTATION
+    // NEEDS IMPLEMENTATION
 }
 
 Menu* ResultsMenu::chooseOption() {
-    //NEEDS IMPLEMENTATION
+    // NEEDS IMPLEMENTATION
     return nullptr;
 }
 
@@ -121,7 +111,7 @@ void GameInitiateMenu::menuDisplay() {
     this->displayChoices();
     cout << "\n========================================\n";
     cin.ignore();
-    //Fill in variables for p1, p2.
+    // Fill in variables for p1, p2.
     cout << "Enter Player One name:";
     getline(cin, p1);
     cout << "Enter Player Two name:";
@@ -137,15 +127,15 @@ string GameInitiateMenu::getPlayerTwoName() const {
 }
 
 Menu* GameInitiateMenu::chooseOption() {
-    //NEEDS IMPLEMENTATION
+    // NEEDS IMPLEMENTATION
     return nullptr;
 }
 
 void LoadMenu::displayChoices() {
-    //NEEDS IMPLEMENTATION
+    // NEEDS IMPLEMENTATION
 }
 
 Menu* LoadMenu::chooseOption() {
-    //NEEDS IMPLEMENTATION
+    // NEEDS IMPLEMENTATION
     return nullptr;
 }
