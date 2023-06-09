@@ -77,6 +77,11 @@ void Board::removePiece(Piece* piece) {
     board[row][col] = nullptr;
 }
 
+void Board::addPiece(Piece* piece) {
+    int col = piece->getXCoord();
+    int row = piece->getYCoord();
+    board[row][col] = piece;
+}
 
 Board::~Board() {
     for (int row = 0; row < 8; ++row) {

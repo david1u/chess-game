@@ -23,6 +23,8 @@ public:
 
 	void removePiece(Piece* piece);
 
+	void addPiece(Piece* piece);
+
 	~Board(); 
 };
 
