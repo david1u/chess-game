@@ -2,6 +2,7 @@
 #define PLAYER_HPP
 #include <iostream>
 #include <string>
+#include <sstream>
 #include <vector>
 #include <map>
 #include "Piece.hpp"
@@ -26,7 +27,7 @@ class Player {
    public:
       Player(std::string name, bool color);
       bool getColor();
-      bool makeMove(Board*);
+      int makeMove(Board*);
       void surrender();
       void addEliminated(Piece*, Board*);
       void showEliminated() const;

@@ -95,7 +95,7 @@ Board::~Board() {
     for (int row = 0; row < 8; ++row) {
         for (int col = 0; col < 8; ++col) {
             if (board[row][col] != nullptr) {
-                std::cout << "Deleting piece: " << board[row][col]->getName() << std::endl;
+                //std::cout << "Deleting piece: " << board[row][col]->getName() << std::endl;
                 delete board[row][col]; 
                 board[row][col] = nullptr; // It's a good practice to set the pointer to nullptr after deleting
             }

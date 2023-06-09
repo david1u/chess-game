@@ -23,7 +23,7 @@ public:
     Board* getBoard() const;
     Player* getPlayerOne() const;
     Player* getPlayerTwo() const;
-    void run();
+    bool run();
     void updatePieceVectors();
     bool inCheck(Piece* king, vector<Piece*> enemyPieces);
     bool canEscapeCheck(Piece* king, vector<Piece*> enemyPieces);
