@@ -5,13 +5,13 @@
 
 ## Project Description
 * Why is it important or interesting to us?
-    * Because we enjoy playing chess, and creating a UI system will give us experience in a field we do not currently understand entirely.
+    * Because we enjoy playing chess and it will be interesting to be on the developing side of this game that we are usually only playing.
 * What languages/tools/technologies do we plan to use? (This list may change over the course of the project)                     
-    * We plan on using C++, and WinForms.
+    * We plan on using C++.
 * What will be the input/output of our project?
-    * Input will be user commands, and outputs will be the UI.
+    * Input will be user commands, and outputs will be in the terminal.
  * What are the features that the project provides?
-    * Saving, loading, undo moves, and a simple computer to play against. Alongside all the traditional rules of chess. The chess board will be displayed on a UI, and the user commands will be on a console.
+    * This is a very traditional game of chess with some added features such as undoing a move. Both the chess board and the user commands will be done through terminal.
 ## User Interface Specification
 ### Navigation Diagram
 
@@ -130,8 +130,8 @@
  
  ## Screenshots
  > Screenshots of the input/output after running your application
- ## Installation/Usage
- > Instructions on installing and running your application
- ## Testing
- > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
+ ## Installation/Usage  
+ > Installing and running our program is as simple as cloning the repository onto your local repository.  
+ ## Testing  
+ > Our project used the google test submodule for unit tests and valgrind for memory tests.
  
