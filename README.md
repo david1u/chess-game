@@ -62,26 +62,43 @@
 
 
  > **Menu Class**  
- > A menu class with a private string variable called menu and 2 public void functions called createGame() and displayMenu().
+ > An abstract menu class with 2 private string variables called menuName. Also contains the public functions displayChoices(), quit(), and chessDisplay() to be inherited.  
+
+> **Start Menu**  
+> The first menu prompted to the user. It gives them two options, start playing or quit.  
+
+> **Game Initiate Menu**  
+> This menu right before the chess game begins. This menu prompts the user to input two player names for white and black.  
+
+> **Surrender Menu**  
+> This menu is shown to confirm if a player would like to forfeit a match.  
+
+> **Results Menu**  
+> This menu prints out the winner of the chess match and shows the pieces captured by both sides.  
 
  > **Player Class**  
- > A player class with a private string variable called name and a private bool variable called BlackWhite, which is used for telling whether the player is the black or white pieces.
+ > The player class contains a private string for name, a private boolean for isWhite, a private vector of strings to store the eliminated pieces, and lastly, two maps to parse the conventional chess grid format into a useable coordinate for our chess board. The class also has setters and getters for their color and eliminated piece vectors, constructors, destructors, a surrender function, and a makeMove function that begins the move sequence.  
 
- > **Piece Class**  
- > An abstract piece class with 2 private bool variables called captured and BlackWhite used for telling whether the piece has been captured or not and whether the piece is black or white respectively. Also has 2 public void functions called captured() and movePiece()
+> **Game Class**  
+> The game class organizes all the other classes to create a functioning game of chess. It holds a board pointer, two vectors of Piece pointers for both black and white pieces, two player pointers, and a menu pointer. It also has a constructor, a destructor, getters and setters for menu, board, and players, as well as check functions for check and checkmate.  
+
+ > **Piece Class**   
+ > This class contains private variables for the x and y coordinate of the piece, the name of the piece, the color of the piece, and the number of moves the piece has made. It also contains another move function, a getPossibleMovesFunction and setters/getters for each private variable.  
 
  > **Pawn, King, Knight, Rook, Bishop, and Queen Classes**  
- > Derived classes from piece class with a private string variable called pieceType
+ > Derived classes from piece class with a public move function for each specific piece. The pawn class also includes functions like enPassant() and pawnPromotion(). The king class has an extra castle() function.  
 
- > **Square Class**  
- > A square class made up of 3 member variables: 2 bool variables called color and occupied for white and black squares and telling whether the square is occupied by a piece respectively, and a Piece variable called currPiece that tells what piece is on the tile. Contains 2 public void functions called setPiece(Piece newPiece) and removePiece(). 
+> **DrawBoard Class**  
+> This class possesses one function to print out the board.  
 
  > **Board Class**  
- > A board class with 3 private member variables: a 2-D array of Square objects called chessBoard and 2 Piece arrays called eliminatedW and eliminatedB for keeping track of the pieces on each side that have been eliminated. Contains void initializeBoard() function, getPiece() function that takes a character and int and returns the piece at that coordinate, void pieceTakenB and pieceTakenW functions that take a Piece object and add it to the corresponding eliminated array, and a checkMove() function that takes 2 Piece parameters and returns a boolean. Composed of square objects.  
+ > The board class contains a single private variable, a 2-D vector of Piece pointers. Its public functions include a getBoard function that returns the whole board, a getPiece function that returns the piece at a certain coordinate, a isFree function that tells if a certain space is empty, an updateBoard function, and a removePiece function.  
  
  > **UPDATES** 
  > In this class diagram update we applied the single responsibility principle while also reinforcing the interface segregation principle. First of all, we decided to remove the display board function and display menu function from the board class and the menu class respectively. We did this to avoid storing data and displaying to terminal in the same class. Second, we added the unique features that some chess pieces posses, ie. en passant, castling. This falls under interface segregation principle because we are not implementing functions that are never used in other chess pieces.
 
+> **UPDATES 2.0**  
+> In this new class diagram, we scrapped the square class since we decided it violated the dependency inversion principle. We believed it was a violation because it was making the piece class (low level module) rely on the square class (low level module) instead of an abstract. We also made the menu class an abstract class, with various different menus as subclasses, to help enforce the open-close principle. Now we can add menus by creating new classes instead of editing the menu class itself. Lastly, the drawBoard class was created to enforce the single responsibility principle. Now we do not have a board class that is storing data while also outputting to terminal.
  
  > ## Phase III
  > You will need to schedule a check-in for the second scrum meeting with the same reader you had your first scrum meeting with (using Calendly). Your entire team must be present. This meeting will occur on week 8 during lab time.
