@@ -16,8 +16,7 @@
 ### Navigation Diagram
 
 
-
-![Untitled Workspace (1)](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/bf0c326a-8d57-4046-8e01-f5299a7486dc)
+![Untitled Workspace (2)](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/790dd91b-42ba-4e88-bf6b-67143ee62766)
 
 
 ### Screen Layouts
