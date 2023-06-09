@@ -92,7 +92,7 @@ bool Game::run() {
             break;
         }
     }
-    // draw_board::printBoard(board);
+    draw_board::printBoard(board);
     return winner;
 }
 
