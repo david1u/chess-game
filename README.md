@@ -5,53 +5,53 @@
 
 ## Project Description
 * Why is it important or interesting to us?
-    * Because we enjoy playing chess, and creating a UI system will give us experience in a field we do not currently understand entirely.
+    * Because we enjoy playing chess and it will be interesting to be on the developing side of this game that we are usually only playing.
 * What languages/tools/technologies do we plan to use? (This list may change over the course of the project)                     
-    * We plan on using C++, and WinForms.
+    * We plan on using C++.
 * What will be the input/output of our project?
-    * Input will be user commands, and outputs will be the UI.
+    * Input will be user commands, and outputs will be in the terminal.
  * What are the features that the project provides?
-    * Saving, loading, undo moves, and a simple computer to play against. Alongside all the traditional rules of chess. The chess board will be displayed on a UI, and the user commands will be on a console.
+    * This is a very traditional game of chess with some added features such as undoing a move. Both the chess board and the user commands will be done through terminal.
 ## User Interface Specification
 ### Navigation Diagram
 
 
-
-![Untitled Workspace](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/86d7ddd3-39d0-41ae-8424-cf8c7667726f)
-
+![Untitled Workspace (2)](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/790dd91b-42ba-4e88-bf6b-67143ee62766)
 
 
 ### Screen Layouts
 
-<img width="243" alt="Screen Shot 2023-05-25 at 11 32 58 PM" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/7e3e573c-7a8a-4733-83aa-ead7a992505d">. 
+<!-- <img width="243" alt="Screen Shot 2023-05-25 at 11 32 58 PM" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/7e3e573c-7a8a-4733-83aa-ead7a992505d">. -->
+
+![image](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/02167cb5-8935-400c-a87f-b9b905628777)
 
 > This menu is the first menu the player sees when they begin playing.  
 > 
 
-<img width="239" alt="Screen Shot 2023-05-25 at 11 40 54 PM" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/5556a02f-f719-40c1-bff8-d1897a30a268">  
+<!-- <img width="239" alt="Screen Shot 2023-05-25 at 11 40 54 PM" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/5556a02f-f719-40c1-bff8-d1897a30a268">  -->
+![image](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/36e1bba2-fa25-4708-9476-84cfe9020e00)
 
 
 > The menu previous to this one will ask the user if they desire to start a new game or quit. This layout is of a simple menu that allows the user to decide if they will be facing a computer or another person in a new game.  
 > 
-![chessboard](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/de5d0404-b6b3-406a-b73d-4f03239cbdcf). 
+
+<!-- ![chessboard](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/de5d0404-b6b3-406a-b73d-4f03239cbdcf). -->
+![image](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/d64ee667-7b88-4f0d-a896-bda932c42c63)
 
 
 > This layout is a mock-up of the chessboard in the context of a match between two players. 
 
-<img width="228" alt="Screen Shot 2023-05-25 at 11 41 33 PM" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/00826bfa-7222-40df-a365-39a05ae613a9">   
+<!-- <img width="228" alt="Screen Shot 2023-05-25 at 11 41 33 PM" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/00826bfa-7222-40df-a365-39a05ae613a9">   -->
+![image](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/5dc10259-90e0-4585-abb4-f03da5173338)
+
 
 > This layout is for if a player wishes to surrender in the middle of a match.  
 > 
 
-<img width="234" alt="Screen Shot 2023-05-26 at 1 35 33 AM" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/1a32deec-bd7c-4010-a284-ba6e626294b1">   
+<!-- <img width="234" alt="Screen Shot 2023-05-26 at 1 35 33 AM" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/1a32deec-bd7c-4010-a284-ba6e626294b1">   -->
+![image](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/97775ae0-9c77-4c46-890b-3fc7de58b276)
 
 > This layout is to celebrate the winner of the chess match.  
-> 
-
-
-<img width="237" alt="Screen Shot 2023-05-26 at 1 36 01 AM" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/c8cca6f3-3e01-414a-bbae-cd1af216a941">
-
-> This layout is for when the user has finished their session.  
 > 
 
 
@@ -62,26 +62,43 @@
 
 
  > **Menu Class**  
- > A menu class with a private string variable called menu and 2 public void functions called createGame() and displayMenu().
+ > An abstract menu class with 2 private string variables called menuName. Also contains the public functions displayChoices(), quit(), and chessDisplay() to be inherited.  
+
+> **Start Menu**  
+> The first menu prompted to the user. It gives them two options, start playing or quit.  
+
+> **Game Initiate Menu**  
+> This menu right before the chess game begins. This menu prompts the user to input two player names for white and black.  
+
+> **Surrender Menu**  
+> This menu is shown to confirm if a player would like to forfeit a match.  
+
+> **Results Menu**  
+> This menu prints out the winner of the chess match and shows the pieces captured by both sides.  
 
  > **Player Class**  
- > A player class with a private string variable called name and a private bool variable called BlackWhite, which is used for telling whether the player is the black or white pieces.
+ > The player class contains a private string for name, a private boolean for isWhite, a private vector of strings to store the eliminated pieces, and lastly, two maps to parse the conventional chess grid format into a useable coordinate for our chess board. The class also has setters and getters for their color and eliminated piece vectors, constructors, destructors, a surrender function, and a makeMove function that begins the move sequence.  
 
- > **Piece Class**  
- > An abstract piece class with 2 private bool variables called captured and BlackWhite used for telling whether the piece has been captured or not and whether the piece is black or white respectively. Also has 2 public void functions called captured() and movePiece()
+> **Game Class**  
+> The game class organizes all the other classes to create a functioning game of chess. It holds a board pointer, two vectors of Piece pointers for both black and white pieces, two player pointers, and a menu pointer. It also has a constructor, a destructor, getters and setters for menu, board, and players, as well as check functions for check and checkmate.  
+
+ > **Piece Class**   
+ > This class contains private variables for the x and y coordinate of the piece, the name of the piece, the color of the piece, and the number of moves the piece has made. It also contains another move function, a getPossibleMovesFunction and setters/getters for each private variable.  
 
  > **Pawn, King, Knight, Rook, Bishop, and Queen Classes**  
- > Derived classes from piece class with a private string variable called pieceType
+ > Derived classes from piece class with a public move function for each specific piece. The pawn class also includes functions like enPassant() and pawnPromotion(). The king class has an extra castle() function.  
 
- > **Square Class**  
- > A square class made up of 3 member variables: 2 bool variables called color and occupied for white and black squares and telling whether the square is occupied by a piece respectively, and a Piece variable called currPiece that tells what piece is on the tile. Contains 2 public void functions called setPiece(Piece newPiece) and removePiece(). 
+> **DrawBoard Class**  
+> This class possesses one function to print out the board.  
 
  > **Board Class**  
- > A board class with 3 private member variables: a 2-D array of Square objects called chessBoard and 2 Piece arrays called eliminatedW and eliminatedB for keeping track of the pieces on each side that have been eliminated. Contains void initializeBoard() function, getPiece() function that takes a character and int and returns the piece at that coordinate, void pieceTakenB and pieceTakenW functions that take a Piece object and add it to the corresponding eliminated array, and a checkMove() function that takes 2 Piece parameters and returns a boolean. Composed of square objects.  
+ > The board class contains a single private variable, a 2-D vector of Piece pointers. Its public functions include a getBoard function that returns the whole board, a getPiece function that returns the piece at a certain coordinate, a isFree function that tells if a certain space is empty, an updateBoard function, and a removePiece function.  
  
  > **UPDATES** 
  > In this class diagram update we applied the single responsibility principle while also reinforcing the interface segregation principle. First of all, we decided to remove the display board function and display menu function from the board class and the menu class respectively. We did this to avoid storing data and displaying to terminal in the same class. Second, we added the unique features that some chess pieces posses, ie. en passant, castling. This falls under interface segregation principle because we are not implementing functions that are never used in other chess pieces.
 
+> **UPDATES 2.0**  
+> In this new class diagram, we scrapped the square class since we decided it violated the dependency inversion principle. We believed it was a violation because it was making the piece class (low level module) rely on the square class (low level module) instead of an abstract. We also made the menu class an abstract class, with various different menus as subclasses, to help enforce the open-close principle. Now we can add menus by creating new classes instead of editing the menu class itself. Lastly, the drawBoard class was created to enforce the single responsibility principle. Now we do not have a board class that is storing data while also outputting to terminal.
  
  > ## Phase III
  > You will need to schedule a check-in for the second scrum meeting with the same reader you had your first scrum meeting with (using Calendly). Your entire team must be present. This meeting will occur on week 8 during lab time.
@@ -112,9 +129,18 @@
  > * Make sure your README file and Project board are up-to-date reflecting the current status of your project (e.g. any changes that you have made during the project such as changes to your class diagram). Previous versions should still be visible through your commit history. 
  
  ## Screenshots
- > Screenshots of the input/output after running your application
+ > <img width="315" alt="image" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/fbaac98f-2fec-4325-8267-4e160c2e77cc">  
+ > <img width="302" alt="image" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/6da71f8d-cc20-42ff-862c-9c21c12f335b">  
+<img width="498" alt="image" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/47431e24-ee13-4314-a924-0f2838eb6af5">    
+<img width="502" alt="image" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/0696749e-8f41-493d-a2ee-2d8bb71ef519">   
+
+
  ## Installation/Usage
- > Instructions on installing and running your application
+ > To install and run our chess game, use the git clone command to clone our repository onto your local machine. (git clone  https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013.git) Once the repo is cloned, change directories to the chess game directory using cd final-project-mchun078-mibra033-dlu046-akoth013.git. Then use cmake . followed by make to create our executables. Lastly, run bin/chess to begin playing!
  ## Testing
- > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
+ > For our project, we used the google testing and mocking framework to validate/test our code. We wrote unit tests for the menu class, player class, and piece class. We also used valgrind to check for memory errors and leaks. Here is an example of our unit tests and a screenshot of the test executable results:  
  
+<img width="656" alt="image" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/b8621945-efbc-4e50-8659-9bbfd113568a">. 
+![image](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/aee6ec2c-a173-4ed2-918a-1b7614519f06)
+ 
+

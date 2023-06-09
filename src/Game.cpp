@@ -7,21 +7,7 @@ Game::Game(std::string p1Name, std::string p2Name) {
     player2 = new Player(p2Name, false);  // Initialize player 2 as black
     menu = nullptr; // default for now
 
-    auto chessBoard = board->getBoard();
-
-    for (const auto& row : chessBoard) {
-        for (const auto& piece : row) {
-            if (piece != nullptr) {  // Ignore empty squares
-                if (piece->getColor()) { // true for white
-                    whitePieces.push_back(piece);
-                } else { // false for black
-                    blackPieces.push_back(piece);
-                }
-            }
-        }
-    }
 }
-
 Menu* Game::getMenu() const{
     return menu;
 }
@@ -44,22 +30,11 @@ Player* Game::getPlayerTwo() const {
 
 void Game::run() {
 
-    King* whiteKing = nullptr;
-    King* blackKing = nullptr;
+    Piece* whiteKing = board->getPiece(7, 4);
+    Piece* blackKing = board->getPiece(0, 4);
 
-    for (auto& piece : whitePieces) {
-        if (piece->getName() == WHITE_KING) { 
-            King* whiteKing = dynamic_cast<King*>(piece);
-            break; // stop the loop as soon as we found the King
-        }
-    }
+    updatePieceVectors();
 
-    for (auto& piece : blackPieces) {
-        if (piece->getName() == BLACK_KING) { 
-            King* blackKing = dynamic_cast<King*>(piece);
-            break; // stop the loop as soon as we found the King
-        }
-    }
     // Game logic goes here
     // implement the game loop, handle player turns, moves, and interactions with the board
 
@@ -69,26 +44,33 @@ void Game::run() {
         while(!player1->makeMove(board)){
             std::cout << "Failed to make move for Player 1" << endl;
         }
-        // if (isCheckmate(whiteKing, whitePieces, blackPieces)) {
-        //     std::cout << "Black wins by checkmate.\n";
-        //     break;
-        // } else if (isCheckmate(blackKing, blackPieces, whitePieces)) {
-        //     std::cout << "White wins by checkmate.\n";
-        //     break;
-        // }
+        //inCheck(whiteKing, blackPieces);
+        updatePieceVectors();
+        if (isCheckmate(whiteKing, whitePieces, blackPieces)) {
+            std::cout << "Black wins by checkmate.\n";
+            break;
+        } else if (isCheckmate(blackKing, blackPieces, whitePieces)) {
+            std::cout << "White wins by checkmate.\n";
+            break;
+        }
         
         draw_board::printBoard(board);
         while(!player2->makeMove(board)){
             std::cout << "Failed to make move for Player 2" << endl;
         }
-        // if (isCheckmate(whiteKing, whitePieces, blackPieces)) {
-        //     std::cout << "Black wins by checkmate.\n";
-        //     break;
-        // } else if (isCheckmate(blackKing, blackPieces, whitePieces)) {
-        //     std::cout << "White wins by checkmate.\n";
-        //     break;
+        updatePieceVectors();
+        // if(inCheck(whiteKing, blackPieces)) {
+        //     std::cout << "white king in check" << endl;
         // }
+        if (isCheckmate(whiteKing, whitePieces, blackPieces)) {
+            std::cout << "Black wins by checkmate.\n";
+            break;
+        } else if (isCheckmate(blackKing, blackPieces, whitePieces)) {
+            std::cout << "White wins by checkmate.\n";
+            break;
+        }
     }
+    draw_board::printBoard(board);
 }
 
 Game::~Game() {
@@ -98,46 +80,113 @@ Game::~Game() {
     delete menu;
 }
 
-bool Game::inCheck(King* king, vector<Piece*> enemyPieces) {
+bool Game::inCheck(Piece* king, vector<Piece*> enemyPieces) {
+    if(!king) {
+        std::cout << "King is nullptr" << std::endl;
+    }
+    std::cout << "The king is located at column: " << king->getXCoord() << " and row: " << king->getYCoord() << std::endl;
     for(Piece* piece : enemyPieces) {
         if(piece->move(king->getXCoord(), king->getYCoord(), board)) {
+            std::cout << king->getColor() << " king in check" << endl;
             return true;
         }
     }
+    std::cout << king->getColor() << " king is not in check" << endl;
     return false;
 }
 
-bool Game::canEscapeCheck(King* king, vector<Piece*> enemyPieces) {
+bool Game::canEscapeCheck(Piece* king, vector<Piece*> enemyPieces) {
     int col = king->getXCoord();
     int row = king->getYCoord();
+    Piece* toBeTempRemoved = nullptr;
     for(const auto& pair: king->getPossibleMoves(board)){
+        toBeTempRemoved = nullptr;
+        if(!board->isFree(pair.second, pair.first)) {
+            toBeTempRemoved = board->getPiece(pair.second, pair.first);
+            board->removePiece(toBeTempRemoved);
+        }
         board->updateBoard(pair.second, pair.first, king);
+        updatePieceVectors();
+
         if(!inCheck(king, enemyPieces)){
+            board->updateBoard(row, col, king);
+            if(toBeTempRemoved) {
+                board->addPiece(toBeTempRemoved);
+            }
+            updatePieceVectors();
+            //std::cout << king->getColor() << " king can escape check" << endl;
             return true;
         }
         board->updateBoard(row, col, king);
+        if(toBeTempRemoved) {
+            board->addPiece(toBeTempRemoved);
+        }
+        updatePieceVectors();
     }
+    //std::cout << king->getColor() << " king can not escape check" << endl;
     return false;
 }
 
-bool Game::checkCanBeBlocked(King* king, vector<Piece*> myPieces, vector<Piece*> enemyPieces) {
+bool Game::checkCanBeBlocked(Piece* king, vector<Piece*> myPieces, vector<Piece*> enemyPieces) {
     for (Piece* piece : myPieces) {
         int col = piece->getXCoord();
         int row = piece->getYCoord();
+        Piece* toBeTempRemoved = nullptr;
         for (const auto& pair : piece->getPossibleMoves(board)) {
+            toBeTempRemoved = nullptr;
+            // if it's a take, simulate the take
+            if(!board->isFree(pair.second, pair.first)) {
+                toBeTempRemoved = board->getPiece(pair.second, pair.first);
+                board->removePiece(toBeTempRemoved);
+            }
+            //move the piece to that location
             board->updateBoard(pair.second, pair.first, piece);
+            updatePieceVectors();
+            //draw_board::printBoard(board);
             if (!inCheck(king, enemyPieces)) {
-                board->updateBoard(row, col, king);
+                board->updateBoard(row, col, piece);
+                if(toBeTempRemoved) {
+                    //std::cout << "trying to add " << toBeTempRemoved->getName() << " back" << endl;
+                    board->addPiece(toBeTempRemoved);
+                }
+                updatePieceVectors();
+                //std::cout << king->getColor() << " king check can be blocked" << endl;
                 return true;
             }
-            board->updateBoard(row, col, king);
+            board->updateBoard(row, col, piece);
+            if(toBeTempRemoved) {
+                //std::cout << "trying to add " << toBeTempRemoved->getName() << " back" << endl;
+                board->addPiece(toBeTempRemoved);
+            }
+            updatePieceVectors();
         }
     }
+    //std::cout << king->getColor() << " king check can no be blocked" << endl;
     return false;
 }
 
-bool Game::isCheckmate(King* king, vector<Piece*> myPieces, vector<Piece*> enemyPieces) {
+bool Game::isCheckmate(Piece* king, vector<Piece*> myPieces, vector<Piece*> enemyPieces) {
     return inCheck(king, enemyPieces) &&
         !canEscapeCheck(king, enemyPieces) &&
         !checkCanBeBlocked(king, myPieces, enemyPieces);
+}
+
+void Game::updatePieceVectors() {
+
+    whitePieces.clear();
+    blackPieces.clear();
+
+    auto chessBoard = board->getBoard();
+
+    for (const auto& row : chessBoard) {
+        for (const auto& piece : row) {
+            if (piece != nullptr) {  // Ignore empty squares
+                if (piece->getColor()) { // true for white
+                    whitePieces.push_back(piece);
+                } else { // false for black
+                    blackPieces.push_back(piece);
+                }
+            }
+        }
+    }
 }
