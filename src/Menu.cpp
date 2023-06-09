@@ -97,23 +97,25 @@ ResultsMenu::ResultsMenu(Game* chess) {
 
 void ResultsMenu::displayChoices() {
     //open file to display what is in the Checkmate.txt file
-    string filename = "text/Checkmate.txt";
-    ifstream file(filename);
+    // string filename = "text/Checkmate.txt";
+    // ifstream file(filename);
 
-    if(file.is_open()) {
-        string line;
-        while (getline(file, line)) {
-            cout << line << '\n';
-        }
-        file.close();
-    }
-    else {
-        throw runtime_error("File failed to open");
-    }
+    // if(file.is_open()) {
+    //     string line;
+    //     while (getline(file, line)) {
+    //         cout << line << '\n';
+    //     }
+    //     file.close();
+    // }
+    // else {
+    //     throw runtime_error("File failed to open");
+    // }
 
-    cout << "================================================\n";
+    // cout << "================================================\n";
     
-    if(chessGame->whiteWins())
+    // if(chessGame->whiteWins()) {
+
+    // }
 }
 
 Menu* ResultsMenu::chooseOption() {
