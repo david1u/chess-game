@@ -90,11 +90,6 @@ Menu* SurrenderMenu::chooseOption() {
     return nullptr;
 }
 
-ResultsMenu::ResultsMenu(Game* chess) {
-    Menu = "Results";
-    chessGame = chess;
-}
-
 void ResultsMenu::displayChoices() {
     //open file to display what is in the Checkmate.txt file
     // string filename = "text/Checkmate.txt";

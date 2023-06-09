@@ -4,6 +4,8 @@
 #include "Game.hpp"
 using namespace std;
 
+class Game;
+
 class Menu {
  protected:
     string menuName;
@@ -54,8 +56,10 @@ class ResultsMenu : public Menu {
    Game* chessGame;
    void displayChoices() override;
  public:
-   ResultsMenu() : : Menu("Results") {}
-   ResultsMenu(Game*); 
+   ResultsMenu() : Menu("Results") {}
+   ResultsMenu(Game* game) : Menu("Results") {
+      chessGame = game;
+   }
    Menu* chooseOption() override;
 };  
 
