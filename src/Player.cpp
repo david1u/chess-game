@@ -52,11 +52,6 @@ bool Player::makeMove(Board* board) {
     }
 
     Piece* piece = board->getPiece(start.second, start.first); 
-    std::vector<std::pair<int, int>> possibleMoves = piece->getPossibleMoves(board);
-    for (const auto& move : possibleMoves) {
-        std::cout << "(" << move.first << ", " << move.second << ")" << std::endl;
-    }
-
 
     cout << "Enter destination position (letter number): ";
     cin >> letter >> number;
@@ -74,7 +69,7 @@ bool Player::makeMove(Board* board) {
 
     // Check if it's a valid move  (this is broken)
     //cout << "passing in row: " << dest.second << " and col: " << dest.first << endl;
-    if(!(piece->move(dest.first, dest.second, *board))) {
+    if(!(piece->move(dest.first, dest.second, board))) {
         cout << "Not a valid move" << endl;
         return false;
     }
