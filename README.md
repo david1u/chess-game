@@ -16,9 +16,8 @@
 ### Navigation Diagram
 
 
-![navi](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/9bf5a2c2-7ff7-4efb-8e8c-c70dcd0368f5)
 
-
+![Untitled Workspace](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/86d7ddd3-39d0-41ae-8424-cf8c7667726f)
 
 
 
@@ -59,7 +58,7 @@
 
 ## Class Diagram!
 
-![UDDEUDUE drawio](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/4fe52e2e-ed10-476e-8425-aeca3eaf9f60)
+![FINALFINALUML](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/e4c9970d-8711-479c-bb62-646689100c2b)
 
 
  > **Menu Class**  
