@@ -143,3 +143,7 @@
 <img width="656" alt="image" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/b8621945-efbc-4e50-8659-9bbfd113568a">. 
 ![image](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/aee6ec2c-a173-4ed2-918a-1b7614519f06)
  
+<img width="656" alt="image" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/b8621945-efbc-4e50-8659-9bbfd113568a">. 
+![image](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/aee6ec2c-a173-4ed2-918a-1b7614519f06)
+
+
