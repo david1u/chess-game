@@ -17,14 +17,14 @@ std::vector<std::pair<int, int>> Piece::getPossibleMoves(Board &board) {
     return moves;
 }
 
-bool Pawn::move(int newCol, int newRow, Board &board) const{
+bool Pawn::move(int newCol, int newRow, Board *board) {
 
-//bool Pawn::move(int newCol, int newRow, Board* board) {
     //std::cout << "Using the pawn's move check" << std::endl;
 
+
     // Calculate the change in x and y coordinates
-    int dcol = newCol - getXCoord();
-    int drow = newRow - getYCoord();
+    int dcol = newCol - this->getXCoord();
+    int drow = newRow - this->getYCoord();
 
     // If the column movement is greater than 1 or row movement is greater than 2, automatically a failed move
     if(abs(dcol) > 1 || abs(drow) > 2) {
@@ -46,23 +46,24 @@ bool Pawn::move(int newCol, int newRow, Board &board) const{
         return false;
     }
 
+    
     if(abs(drow) == 2 && moveCount != 0) {
         return false;
     }
+
     // Pawns can only capture to the diagonals
     if(abs(dcol) == 1 && abs(drow) == 1) {
-        if(board.isFree(newRow, newCol)) { // If the diagonal square is free, it's not a valid capture
+        if(board->isFree(newRow, newCol)) { // If the diagonal square is free, it's not a valid capture
             return false;
         }       
         else {
-            Piece* enemyPiece = board.getPiece(newRow, newCol);
+            Piece* enemyPiece = board->getPiece(newRow, newCol);
             // Check if the piece at the destination is of the same color
             if(enemyPiece->getColor() == this->getColor()) {
                  return false;
             }
         }
     }
-
 
     //if(abs(dcol) == 1 && drow == (this->getColor() ? -1 : 1)) {
     //    if(board.isFree(newRow, newCol)) {
@@ -82,6 +83,7 @@ bool Pawn::move(int newCol, int newRow, Board &board) const{
     //}
 
 
+
     // If the pawn is moving straight forward, the destination square must be free
     if(dcol == 0 && !board.isFree(newRow, newCol)) {
         return false;
@@ -95,11 +97,11 @@ bool Pawn::move(int newCol, int newRow, Board &board) const{
     return true;
 }
 
-bool Pawn::enPassant(int newX, int newY, Board &board) const{
+bool Pawn::enPassant(int newX, int newY, Board* board) {
     //pawns must be next to each other
     //pawns must be enemies
     //enemy piece must have moved 2 spaces in 1 turn
-    Piece* enemyPiece = board.getPiece(newX, this->getYCoord());
+    Piece* enemyPiece = board->getPiece(newX, this->getYCoord());
     if (enemyPiece != nullptr) {
         if (enemyPiece->getName() == BLACK_PAWN || enemyPiece->getName() == WHITE_PAWN) {
             if (this->getColor() != enemyPiece->getColor()) {
@@ -113,7 +115,7 @@ bool Pawn::enPassant(int newX, int newY, Board &board) const{
     
     return false;
 }
-bool Rook::move(int newX, int newY, Board &board) const{
+bool Rook::move(int newX, int newY, Board &board) {
     //if both old x and y coords are same as new x and y coords
     // or if both old x and y coords are different from new x and y coords
     // or if the piece at the new coords is the same color as the rook
@@ -125,7 +127,7 @@ bool Rook::move(int newX, int newY, Board &board) const{
     }
 
     //check if there are no pieces in the way from old coords to new coords
-    Piece* movement = board.getPiece(this->getYCoord(), this->getXCoord());
+    Piece* movement = this;
     //calculate the x and y direction the piece will be moving in
     //-1 if piece moves left or down
     //1 if piece moves right or up
@@ -150,7 +152,7 @@ bool Rook::move(int newX, int newY, Board &board) const{
     return true;
 }
 
-bool Knight::move(int newX, int newY, Board &board) const{   
+bool Knight::move(int newX, int newY, Board &board) {   
     if(!board.isFree(newY, newX)){
         Piece* enemyPiece = board.getPiece(newX, newY);
         if(enemyPiece->getColor() == this->getColor())
@@ -163,7 +165,7 @@ bool Knight::move(int newX, int newY, Board &board) const{
     return false; 
 }
 
-bool Bishop::move(int newX, int newY, Board &board) const{
+bool Bishop::move(int newX, int newY, Board &board) {
     //if both old x and y coords are same as new x and y coords
     // or if the difference between x coords isnt the same as the difference between y coords
     // or if the piece at the new coords is the same color as the bishop
@@ -175,7 +177,7 @@ bool Bishop::move(int newX, int newY, Board &board) const{
     }
 
     //check if there are no pieces in the way
-    Piece* movement = board.getPiece(this->getYCoord(), this->getXCoord());
+    Piece* movement = this;
     //calculate the x and y direction the piece will be moving in
     //-1 if piece moves left or down
     //1 if piece moves right or up
@@ -193,7 +195,7 @@ bool Bishop::move(int newX, int newY, Board &board) const{
     return true;
 }
 
-bool Queen::move(int newX, int newY, Board &board) const{
+bool Queen::move(int newX, int newY, Board &board) {
     //if piece would end up staying in same place
     // or if piece isn't going to move horizontally, vertically, or diagonally
     // or if the piece at the new coords is the same color as the rook
@@ -206,7 +208,7 @@ bool Queen::move(int newX, int newY, Board &board) const{
     }
     
     //check if there are no pieces in the way
-    Piece* movement = board.getPiece(this->getYCoord(), this->getXCoord());
+    Piece* movement = this;
     //calculate the x and y direction the piece will be moving in
     //-1 if piece moves left or down
     //1 if piece moves right or up
@@ -231,7 +233,7 @@ bool Queen::move(int newX, int newY, Board &board) const{
     return true;
 }
 
-bool King::move(int newX, int newY, Board &board) const{  
+bool King::move(int newX, int newY, Board &board) {  
     if(!board.isFree(newY, newX)){
         Piece* enemyPiece = board.getPiece(newX, newY);
         if(enemyPiece->getColor() == this->getColor())

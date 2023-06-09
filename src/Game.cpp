@@ -100,7 +100,7 @@ Game::~Game() {
 
 bool Game::inCheck(King* king, vector<Piece*> enemyPieces) {
     for(Piece* piece : enemyPieces) {
-        if(piece->move(king->getYCoord(), king->getXCoord(), *board)) {
+        if(piece->move(king->getYCoord(), king->getXCoord(), board)) {
             return true;
         }
     }
@@ -110,7 +110,7 @@ bool Game::inCheck(King* king, vector<Piece*> enemyPieces) {
 bool Game::canEscapeCheck(King* king, vector<Piece*> enemyPieces) {
     int col = king->getXCoord();
     int row = king->getYCoord();
-    for(const auto& pair: king->getPossibleMoves(*board)){
+    for(const auto& pair: king->getPossibleMoves(board)){
         board->updateBoard(pair.second, pair.first, king);
         if(!inCheck(king, enemyPieces)){
             return true;
@@ -124,7 +124,7 @@ bool Game::checkCanBeBlocked(King* king, vector<Piece*> myPieces, vector<Piece*>
     for (Piece* piece : myPieces) {
         int col = piece->getXCoord();
         int row = piece->getYCoord();
-        for (const auto& pair : piece->getPossibleMoves(*board)) {
+        for (const auto& pair : piece->getPossibleMoves(board)) {
             board->updateBoard(pair.second, pair.first, piece);
             if (!inCheck(king, enemyPieces)) {
                 board->updateBoard(row, col, king);
