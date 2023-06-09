@@ -15,13 +15,22 @@ bool Player::getColor() {
 //bool Player::getInput() {
 
 // }
-bool Player::makeMove(Board* board) {
+int Player::makeMove(Board* board) {
+    string input;
     char letter;
     int number;
     pair<int, int> start, dest;
     cout << "The player is white: " << getColor() << endl;
     cout << "Enter starting position (letter number): ";
-    cin >> letter >> number;
+    getline(cin, input);
+
+    if (input == "resign") {
+        cout << (getColor() ? "White" : "Black") << " player has resigned.\n";
+        return 1;
+    }
+
+    istringstream input_stream(input);
+    input_stream >> letter >> number;
     //cout << "we got here";
     start = make_pair(letterToNum[letter], numToNum[number]);
     //cout << "made the pair" << endl;
@@ -29,7 +38,7 @@ bool Player::makeMove(Board* board) {
     // Check if the soruce coordinates are on the board
     if (start.first < 0 || start.first > 7 || start.second < 0 || start.second > 7) {
             cout << "Invalid starting position.\n";
-            return false;
+            return 2;
     }
 
     // Check if you are moving your own piece
@@ -48,19 +57,22 @@ bool Player::makeMove(Board* board) {
     }
     if(board->getPiece(start.second, start.first)->getColor() != this->getColor()) {
             cout << "Not a valid piece to move or no piece exists\n";
-            return false;
+            return 2;
     }
 
     Piece* piece = board->getPiece(start.second, start.first); 
 
-    std::vector<std::pair<int, int>> possibleMoves = piece->getPossibleMoves(board);
-    // first in pair is col, second is row
-    for (const auto& move : possibleMoves) {
-        std::cout << "(" << move.first << ", " << move.second << ")" << std::endl;
-    }
+    // std::vector<std::pair<int, int>> possibleMoves = piece->getPossibleMoves(board);
+    // // first in pair is col, second is row
+    // for (const auto& move : possibleMoves) {
+    //     std::cout << "(" << move.first << ", " << move.second << ")" << std::endl;
+    // }
 
     cout << "Enter destination position (letter number): ";
-    cin >> letter >> number;
+    getline(cin, input);
+    istringstream input_stream2(input);
+
+    input_stream2 >> letter >> number;
     
     dest = make_pair(letterToNum[letter], numToNum[number]);
     //cout << "made the pair" << endl;
@@ -68,7 +80,7 @@ bool Player::makeMove(Board* board) {
     // Check if the destination is on the board
     if (dest.first < 0 || dest.first > 7 || dest.second < 0 || dest.second > 7) {
             cout << "Invalid destination position.\n";
-            return false;
+            return 2;
     }
 
     //cout << "got past validating on board" << endl;
@@ -77,7 +89,7 @@ bool Player::makeMove(Board* board) {
     //cout << "passing in row: " << dest.second << " and col: " << dest.first << endl;
     if(!(piece->move(dest.first, dest.second, board))) {
         cout << "Not a valid move" << endl;
-        return false;
+        return 2;
     }
     //cout << "got past validatin" << endl;
 
@@ -91,7 +103,7 @@ bool Player::makeMove(Board* board) {
     
     // move successful
     //std::cout << "we did it reddit" << std::endl;
-    return true;
+    return 0;
 }
 
 void Player::surrender() {

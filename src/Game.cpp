@@ -28,10 +28,11 @@ Player* Game::getPlayerTwo() const {
     return player2;
 }
 
-void Game::run() {
+bool Game::run() {
 
     Piece* whiteKing = board->getPiece(7, 4);
     Piece* blackKing = board->getPiece(0, 4);
+    bool winner = true;
 
     updatePieceVectors();
 
@@ -41,36 +42,58 @@ void Game::run() {
     // Draw board
     while(true){
         draw_board::printBoard(board);
-        while(!player1->makeMove(board)){
+
+        int moveResult = player1->makeMove(board);
+        while(moveResult != 0 && moveResult != 1){
             std::cout << "Failed to make move for Player 1" << endl;
+            moveResult = player1->makeMove(board);
         }
+        if (moveResult == 1) {
+            winner = false; // Assuming player 2 wins if player 1 resigns
+            break;
+        }
+        // while(player1->makeMove(board) == 1){
+        //     std::cout << "Failed to make move for Player 1" << endl;
+        // }
+        // if()
         //inCheck(whiteKing, blackPieces);
         updatePieceVectors();
         if (isCheckmate(whiteKing, whitePieces, blackPieces)) {
-            std::cout << "Black wins by checkmate.\n";
+            //std::cout << "Black wins by checkmate.\n";
+            winner = false;
             break;
         } else if (isCheckmate(blackKing, blackPieces, whitePieces)) {
-            std::cout << "White wins by checkmate.\n";
+            //std::cout << "White wins by checkmate.\n";
+            winner = true;
             break;
         }
         
         draw_board::printBoard(board);
-        while(!player2->makeMove(board)){
+        moveResult = player2->makeMove(board);
+        while(moveResult != 0 && moveResult != 1){
             std::cout << "Failed to make move for Player 2" << endl;
+            moveResult = player2->makeMove(board);
+        }
+        if (moveResult == 1) {
+            winner = true; // Assuming player 1 wins if player 2 resigns
+            break;
         }
         updatePieceVectors();
         // if(inCheck(whiteKing, blackPieces)) {
         //     std::cout << "white king in check" << endl;
         // }
         if (isCheckmate(whiteKing, whitePieces, blackPieces)) {
-            std::cout << "Black wins by checkmate.\n";
+            //std::cout << "Black wins by checkmate.\n";
+            winner = false;
             break;
         } else if (isCheckmate(blackKing, blackPieces, whitePieces)) {
-            std::cout << "White wins by checkmate.\n";
+            //std::cout << "White wins by checkmate.\n";
+            winner = true;
             break;
         }
     }
-    draw_board::printBoard(board);
+    // draw_board::printBoard(board);
+    return winner;
 }
 
 Game::~Game() {
@@ -84,14 +107,14 @@ bool Game::inCheck(Piece* king, vector<Piece*> enemyPieces) {
     if(!king) {
         std::cout << "King is nullptr" << std::endl;
     }
-    std::cout << "The king is located at column: " << king->getXCoord() << " and row: " << king->getYCoord() << std::endl;
+    //std::cout << "The king is located at column: " << king->getXCoord() << " and row: " << king->getYCoord() << std::endl;
     for(Piece* piece : enemyPieces) {
         if(piece->move(king->getXCoord(), king->getYCoord(), board)) {
-            std::cout << king->getColor() << " king in check" << endl;
+            //std::cout << king->getColor() << " king in check" << endl;
             return true;
         }
     }
-    std::cout << king->getColor() << " king is not in check" << endl;
+    //std::cout << king->getColor() << " king is not in check" << endl;
     return false;
 }
 
