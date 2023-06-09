@@ -49,7 +49,7 @@
 > 
 
 <!-- <img width="234" alt="Screen Shot 2023-05-26 at 1 35 33 AM" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/1a32deec-bd7c-4010-a284-ba6e626294b1">   -->
-![image](https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/97775ae0-9c77-4c46-890b-3fc7de58b276)
+<img width="767" alt="image" src="https://github.com/cs100/final-project-mchun078-mibra033-dlu046-akoth013/assets/129913826/cb966a27-de6b-4972-bde8-de1165fd824d">
 
 > This layout is to celebrate the winner of the chess match.  
 > 
