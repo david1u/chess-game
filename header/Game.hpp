@@ -24,10 +24,11 @@ public:
     Player* getPlayerOne() const;
     Player* getPlayerTwo() const;
     void run();
-    bool inCheck(King* king, vector<Piece*> enemyPieces);
-    bool canEscapeCheck(King* king, vector<Piece*> enemyPieces);
-    bool checkCanBeBlocked(King* king, vector<Piece*> myPieces, vector<Piece*> enemyPieces);
-    bool isCheckmate(King* king, vector<Piece*> myPieces, vector<Piece*> enemyPieces);
+    void updatePieceVectors();
+    bool inCheck(Piece* king, vector<Piece*> enemyPieces);
+    bool canEscapeCheck(Piece* king, vector<Piece*> enemyPieces);
+    bool checkCanBeBlocked(Piece* king, vector<Piece*> myPieces, vector<Piece*> enemyPieces);
+    bool isCheckmate(Piece* king, vector<Piece*> myPieces, vector<Piece*> enemyPieces);
 
 };
 
